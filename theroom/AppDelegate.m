@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "HelloWorldLayer.h"
+#import "StartMenu.h"
 
 @implementation theroomAppDelegate
 @synthesize window=window_, glView=glView_;
@@ -33,7 +33,7 @@
 	// Center main window
 	[window_ center];
 	
-	[director runWithScene:[HelloWorldLayer scene]];
+	[director runWithScene:[StartMenu scene]];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed: (NSApplication *) theApplication
