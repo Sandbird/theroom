@@ -7,6 +7,7 @@
 //
 
 #import "StartMenu.h"
+#import "RoomLayer.h"
 
 
 // Import the interfaces
@@ -42,6 +43,7 @@
 		CCMenuItem *playMenuItem = [CCMenuItemLabel itemWithLabel:playLabel block:^(id sender)
 									{
 										NSLog(@"Play");
+										[[CCDirector sharedDirector] pushScene:[RoomLayer scene]];
 									}];
 		
 		CCLabelTTF *quitLabel = [CCLabelTTF labelWithString:@"Quit" fontName:@"Arial" fontSize:32];

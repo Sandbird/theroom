@@ -9,12 +9,12 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
-// HelloWorldLayer
+// StartMenu
 @interface StartMenu : CCLayer
 {
 }
 
-// returns a CCScene that contains the HelloWorldLayer as the only child
+// returns a CCScene that contains the StartMenu  as the only child
 +(CCScene *) scene;
 
 @end
