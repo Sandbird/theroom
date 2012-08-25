@@ -13,6 +13,8 @@
 		3118D9EF15E91BFC00D4518B /* Pathfinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3118D9EE15E91BFC00D4518B /* Pathfinder.m */; };
 		3118D9F915E91EF700D4518B /* Waypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3118D9F815E91EF700D4518B /* Waypoint.m */; };
 		3118D9FF15E93EA400D4518B /* theroom.png in Resources */ = {isa = PBXBuildFile; fileRef = 3118D9FE15E93EA400D4518B /* theroom.png */; };
+		3118DA0315E94BB300D4518B /* bed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3118DA0215E94BB300D4518B /* bed.png */; };
+		3118DA0615E94BFE00D4518B /* Furniture.m in Sources */ = {isa = PBXBuildFile; fileRef = 3118DA0515E94BFE00D4518B /* Furniture.m */; };
 		31EE31B515E8EC0B00DAF6B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B415E8EC0B00DAF6B9 /* QuartzCore.framework */; };
 		31EE31B715E8EC0B00DAF6B9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B615E8EC0B00DAF6B9 /* OpenGL.framework */; };
 		31EE31B915E8EC0B00DAF6B9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B815E8EC0B00DAF6B9 /* OpenAL.framework */; };
@@ -133,7 +135,6 @@
 		31EE334F15E8FB1600DAF6B9 /* iskapur.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334815E8FB1600DAF6B9 /* iskapur.png */; };
 		31EE335015E8FB1600DAF6B9 /* Johnny.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334915E8FB1600DAF6B9 /* Johnny.png */; };
 		31EE335115E8FB1600DAF6B9 /* position.txt in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334A15E8FB1600DAF6B9 /* position.txt */; };
-		31EE335215E8FB1600DAF6B9 /* rum.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334B15E8FB1600DAF6B9 /* rum.png */; };
 		31EE335315E8FB1600DAF6B9 /* simi.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334C15E8FB1600DAF6B9 /* simi.png */; };
 		31EE335415E8FB1600DAF6B9 /* sofi.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334D15E8FB1600DAF6B9 /* sofi.png */; };
 /* End PBXBuildFile section */
@@ -149,6 +150,9 @@
 		3118D9F715E91EF600D4518B /* Waypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waypoint.h; sourceTree = "<group>"; };
 		3118D9F815E91EF700D4518B /* Waypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waypoint.m; sourceTree = "<group>"; };
 		3118D9FE15E93EA400D4518B /* theroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = theroom.png; path = Resources/theroom.png; sourceTree = "<group>"; };
+		3118DA0215E94BB300D4518B /* bed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bed.png; path = Resources/bed.png; sourceTree = "<group>"; };
+		3118DA0415E94BFE00D4518B /* Furniture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Furniture.h; sourceTree = "<group>"; };
+		3118DA0515E94BFE00D4518B /* Furniture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Furniture.m; sourceTree = "<group>"; };
 		31EE31B015E8EC0B00DAF6B9 /* theroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31EE31B415E8EC0B00DAF6B9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		31EE31B615E8EC0B00DAF6B9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -407,7 +411,6 @@
 		31EE334815E8FB1600DAF6B9 /* iskapur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iskapur.png; path = Resources/iskapur.png; sourceTree = "<group>"; };
 		31EE334915E8FB1600DAF6B9 /* Johnny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Johnny.png; path = Resources/Johnny.png; sourceTree = "<group>"; };
 		31EE334A15E8FB1600DAF6B9 /* position.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = position.txt; path = Resources/position.txt; sourceTree = "<group>"; };
-		31EE334B15E8FB1600DAF6B9 /* rum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rum.png; path = Resources/rum.png; sourceTree = "<group>"; };
 		31EE334C15E8FB1600DAF6B9 /* simi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = simi.png; path = Resources/simi.png; sourceTree = "<group>"; };
 		31EE334D15E8FB1600DAF6B9 /* sofi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sofi.png; path = Resources/sofi.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -466,6 +469,8 @@
 				31EE333315E8EC0E00DAF6B9 /* AppDelegate.m */,
 				3118D9DC15E90BC000D4518B /* Character.h */,
 				3118D9DD15E90BC000D4518B /* Character.m */,
+				3118DA0415E94BFE00D4518B /* Furniture.h */,
+				3118DA0515E94BFE00D4518B /* Furniture.m */,
 				31EE31CE15E8EC0B00DAF6B9 /* libs */,
 				3118D9ED15E91BFC00D4518B /* Pathfinder.h */,
 				3118D9EE15E91BFC00D4518B /* Pathfinder.m */,
@@ -851,11 +856,11 @@
 		31EE332E15E8EC0E00DAF6B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3118DA0215E94BB300D4518B /* bed.png */,
 				3118D9FE15E93EA400D4518B /* theroom.png */,
 				31EE334815E8FB1600DAF6B9 /* iskapur.png */,
 				31EE334915E8FB1600DAF6B9 /* Johnny.png */,
 				31EE334A15E8FB1600DAF6B9 /* position.txt */,
-				31EE334B15E8FB1600DAF6B9 /* rum.png */,
 				31EE334C15E8FB1600DAF6B9 /* simi.png */,
 				31EE334D15E8FB1600DAF6B9 /* sofi.png */,
 				31EE332F15E8EC0E00DAF6B9 /* Prefix.pch */,
@@ -925,12 +930,12 @@
 				31EE334F15E8FB1600DAF6B9 /* iskapur.png in Resources */,
 				31EE335015E8FB1600DAF6B9 /* Johnny.png in Resources */,
 				31EE335115E8FB1600DAF6B9 /* position.txt in Resources */,
-				31EE335215E8FB1600DAF6B9 /* rum.png in Resources */,
 				31EE335315E8FB1600DAF6B9 /* simi.png in Resources */,
 				31EE335415E8FB1600DAF6B9 /* sofi.png in Resources */,
 				3118D9E115E90E6000D4518B /* gameData.plist in Resources */,
 				3118D9EC15E91AD900D4518B /* floorPlan.plist in Resources */,
 				3118D9FF15E93EA400D4518B /* theroom.png in Resources */,
+				3118DA0315E94BB300D4518B /* bed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,6 +1055,7 @@
 				3118D9DE15E90BC000D4518B /* Character.m in Sources */,
 				3118D9EF15E91BFC00D4518B /* Pathfinder.m in Sources */,
 				3118D9F915E91EF700D4518B /* Waypoint.m in Sources */,
+				3118DA0615E94BFE00D4518B /* Furniture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

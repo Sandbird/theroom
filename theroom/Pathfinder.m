@@ -80,6 +80,21 @@ static Pathfinder *sharedPathfinder = nil;
 
 - (NSArray*)findPathBetween:(NSString *)location andDestination:(NSString *)destination
 {
+	Waypoint *locationWaypoint = _waypoints[location];
+	NSArray *waypointPath = locationWaypoint.paths[destination];
+	if (waypointPath != nil)
+	{
+		NSMutableArray *waypoints = [NSMutableArray arrayWithCapacity:[waypointPath count]];
+		for (NSString *nextDestination in waypointPath)
+		{
+			[waypoints addObject:_waypoints[nextDestination]];
+		}
+		
+		return waypoints;
+	}
+	
+	NSLog(@"ERROR: No paths to destination %@ from %@", destination, location);
+	
 	return nil;
 }
 

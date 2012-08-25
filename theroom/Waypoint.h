@@ -12,6 +12,7 @@
 
 @property (nonatomic, readonly) CGPoint location;
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSDictionary *paths;
 
 + (id)waypointWithWaypointData:(NSDictionary *)waypointData;
 - (id)initWithWaypointData:(NSDictionary *)waypointData;

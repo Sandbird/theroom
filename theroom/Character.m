@@ -19,7 +19,7 @@
 		_appearance = [CCSprite spriteWithFile:pathToAppearance];
 		[self addChild:_appearance];
 		
-		_waypointName = @"";
+		_waypointName = @"Entrance";
 	}
 	
 	return self;

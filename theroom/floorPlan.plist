@@ -15,6 +15,11 @@
 		</dict>
 		<key>Paths</key>
 		<dict>
+			<key>Bed</key>
+			<array>
+				<string>RoomCentre</string>
+				<string>Bed</string>
+			</array>
 			<key>RoomCentre</key>
 			<array>
 				<string>RoomCentre</string>

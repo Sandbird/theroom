@@ -11,10 +11,12 @@
 
 // Forward declarations
 @class Character;
+@class Furniture;
 
 @interface RoomLayer : CCLayer
 {
 	CCSprite *_background;
+	Furniture *_bed;
 	Character *_johnny;
 }
 

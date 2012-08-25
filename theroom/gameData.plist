@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>Bed</key>
+	<dict>
+		<key>Image</key>
+		<string>bed</string>
+		<key>Name</key>
+		<string>Bed</string>
+		<key>PositionInRoom</key>
+		<dict>
+			<key>X</key>
+			<integer>185</integer>
+			<key>Y</key>
+			<integer>194</integer>
+		</dict>
+	</dict>
+</dict>
 </plist>
