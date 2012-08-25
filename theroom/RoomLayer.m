@@ -9,7 +9,9 @@
 #import "RoomLayer.h"
 
 #import "Character.h"
+#import "Pathfinder.h"
 #import "UtilityFunctions.h"
+#import "Waypoint.h"
 
 
 @implementation RoomLayer
@@ -43,14 +45,23 @@
 		
 		_johnny = [[Character alloc] init];
 		
-		NSString *pathToConfig = [[NSBundle mainBundle] pathForResource:@"gameData" ofType:@"plist"];
-		NSDictionary *gameData = [NSDictionary dictionaryWithContentsOfFile:pathToConfig];
-		
-		_johnny.position = CGPointFromDictionary(gameData[@"Johnny"][@"Position"]);
+		Waypoint *entrancePoint = [[Pathfinder sharedPathfinder] waypoint:@"Entrance"];
+		_johnny.position = entrancePoint.location;
 		[self addChild:_johnny];
+		
+		self.isMouseEnabled = YES;
 	}
 	
 	return self;
+}
+
+- (BOOL)ccMouseUp:(NSEvent *)event
+{
+	NSLog(@"Moustup : %@", event);
+	
+	// Take the event and send johnny to the location
+	
+	return YES;
 }
 
 @end
