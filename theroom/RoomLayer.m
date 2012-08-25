@@ -9,6 +9,8 @@
 #import "RoomLayer.h"
 
 #import "Character.h"
+#import "FiniteState.h"
+#import "FiniteStateMachine.h"
 #import "Furniture.h"
 #import "Pathfinder.h"
 #import "UtilityFunctions.h"
@@ -70,9 +72,19 @@
 		[self addChild:_johnny];
 		
 		self.isMouseEnabled = YES;
+		
+		[self setupStateMachine];
+		[_room start];
+		
+		[self scheduleUpdate];
 	}
 	
 	return self;
+}
+
+- (void)update:(ccTime)delta
+{
+	[_room update:delta];
 }
 
 - (BOOL)ccMouseUp:(NSEvent *)event
@@ -99,6 +111,25 @@
 	}
 	
 	return YES;
+}
+
+#pragma mark - Private 
+
+- (void)setupStateMachine
+{
+	FiniteState *idle = [FiniteState stateWithName:@"idle"];
+	
+	
+	_room = [[FiniteStateMachine alloc] initWithInitialState:idle];
+}
+
+#pragma mark -
+
+- (void)dealloc
+{
+	[_room release];
+	
+	[super dealloc];
 }
 
 @end

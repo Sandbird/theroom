@@ -11,6 +11,7 @@
 
 // Forward declarations
 @class Character;
+@class FiniteStateMachine;
 @class Furniture;
 
 @interface RoomLayer : CCLayer
@@ -21,9 +22,13 @@
 	Furniture *_fridge;
 	Furniture *_couch;
 	Character *_johnny;
+	
+	FiniteStateMachine *_room;
 }
 
 // returns a CCScene that contains the RoomLayer as the only child
 +(CCScene *) scene;
+
+- (void)update:(ccTime)delta;
 
 @end
