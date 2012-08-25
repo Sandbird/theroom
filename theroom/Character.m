@@ -18,6 +18,8 @@
 		NSString *pathToAppearance = [[NSBundle mainBundle] pathForResource:@"Johnny" ofType:@"png"];
 		_appearance = [CCSprite spriteWithFile:pathToAppearance];
 		[self addChild:_appearance];
+		
+		_waypointName = @"";
 	}
 	
 	return self;

@@ -59,7 +59,14 @@
 {
 	// Take the event and send johnny to the location
 	CGPoint mouseLocation = event.locationInWindow;
-	NSLog(@"Closest Location : %@", [[Pathfinder sharedPathfinder] closestLocationTo:mouseLocation]);
+	NSString *mouseWaypointName = [[Pathfinder sharedPathfinder] closestLocationTo:mouseLocation];
+	
+	if (_johnny.waypointName != mouseWaypointName)
+	{
+		Waypoint *destination = [[Pathfinder sharedPathfinder] waypoint:mouseWaypointName];
+		CCAction *moveAction = [CCMoveTo actionWithDuration:2.0f position:destination.location];
+		[_johnny runAction:moveAction];
+	}
 	
 	return YES;
 }

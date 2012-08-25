@@ -24,7 +24,7 @@
 	<key>RoomCentre</key>
 	<dict>
 		<key>Name</key>
-		<string>Centre</string>
+		<string>RoomCentre</string>
 		<key>Position</key>
 		<dict>
 			<key>X</key>
@@ -37,6 +37,30 @@
 			<key>Entrance</key>
 			<array>
 				<string>Entrance</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Bed</key>
+	<dict>
+		<key>Name</key>
+		<string>Bed</string>
+		<key>Position</key>
+		<dict>
+			<key>X</key>
+			<integer>240</integer>
+			<key>Y</key>
+			<integer>200</integer>
+		</dict>
+		<key>Paths</key>
+		<dict>
+			<key>Entrance</key>
+			<array>
+				<string>RoomCentre</string>
+				<string>Entrance</string>
+			</array>
+			<key>RoomCentre</key>
+			<array>
+				<string>RoomCentre</string>
 			</array>
 		</dict>
 	</dict>

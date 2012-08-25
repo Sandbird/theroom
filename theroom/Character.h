@@ -14,4 +14,6 @@
 	CCSprite *_appearance;
 }
 
+@property (nonatomic, readwrite, retain) NSString *waypointName;
+
 @end
