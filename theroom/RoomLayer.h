@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+// Forward declarations
+@class Character;
+
 @interface RoomLayer : CCLayer
 {
 	CCSprite *_background;
+	Character *_johnny;
 }
 
 // returns a CCScene that contains the RoomLayer as the only child

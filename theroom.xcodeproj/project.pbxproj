@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3118D9DE15E90BC000D4518B /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 3118D9DD15E90BC000D4518B /* Character.m */; };
+		3118D9E115E90E6000D4518B /* gameData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3118D9E015E90E6000D4518B /* gameData.plist */; };
 		31EE31B515E8EC0B00DAF6B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B415E8EC0B00DAF6B9 /* QuartzCore.framework */; };
 		31EE31B715E8EC0B00DAF6B9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B615E8EC0B00DAF6B9 /* OpenGL.framework */; };
 		31EE31B915E8EC0B00DAF6B9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B815E8EC0B00DAF6B9 /* OpenAL.framework */; };
@@ -134,6 +136,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3118D9DC15E90BC000D4518B /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		3118D9DD15E90BC000D4518B /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		3118D9E015E90E6000D4518B /* gameData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gameData.plist; sourceTree = "<group>"; };
+		3118D9E615E915D400D4518B /* UtilityFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UtilityFunctions.h; sourceTree = "<group>"; };
 		31EE31B015E8EC0B00DAF6B9 /* theroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31EE31B415E8EC0B00DAF6B9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		31EE31B615E8EC0B00DAF6B9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -457,6 +463,9 @@
 				31EE333E15E8ED2100DAF6B9 /* StartMenu.m */,
 				31EE334015E8F8E500DAF6B9 /* RoomLayer.h */,
 				31EE334115E8F8E500DAF6B9 /* RoomLayer.m */,
+				3118D9DC15E90BC000D4518B /* Character.h */,
+				3118D9DD15E90BC000D4518B /* Character.m */,
+				3118D9E615E915D400D4518B /* UtilityFunctions.h */,
 			);
 			path = theroom;
 			sourceTree = "<group>";
@@ -839,6 +848,7 @@
 				31EE334D15E8FB1600DAF6B9 /* sofi.png */,
 				31EE332F15E8EC0E00DAF6B9 /* Prefix.pch */,
 				31EE333015E8EC0E00DAF6B9 /* main.m */,
+				3118D9E015E90E6000D4518B /* gameData.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -906,6 +916,7 @@
 				31EE335215E8FB1600DAF6B9 /* rum.png in Resources */,
 				31EE335315E8FB1600DAF6B9 /* simi.png in Resources */,
 				31EE335415E8FB1600DAF6B9 /* sofi.png in Resources */,
+				3118D9E115E90E6000D4518B /* gameData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,6 +1033,7 @@
 				31EE333415E8EC0E00DAF6B9 /* AppDelegate.m in Sources */,
 				31EE333F15E8ED2100DAF6B9 /* StartMenu.m in Sources */,
 				31EE334215E8F8E500DAF6B9 /* RoomLayer.m in Sources */,
+				3118D9DE15E90BC000D4518B /* Character.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
