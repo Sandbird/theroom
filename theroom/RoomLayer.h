@@ -17,6 +17,9 @@
 {
 	CCSprite *_background;
 	Furniture *_bed;
+	Furniture *_tv;
+	Furniture *_fridge;
+	Furniture *_couch;
 	Character *_johnny;
 }
 

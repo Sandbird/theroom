@@ -45,13 +45,6 @@
 		_background.position = ccp( winSize.width / 2, winSize.height / 2);
 		[self addChild:_background];
 		
-		// Setup the Character Johnny
-		_johnny = [[Character alloc] init];
-		
-		Waypoint *entrancePoint = [[Pathfinder sharedPathfinder] waypoint:@"Entrance"];
-		_johnny.position = entrancePoint.location;
-		[self addChild:_johnny];
-		
 		// Game specific data
 		NSString *pathToGameData = [mainBundle pathForResource:@"gameData" ofType:@"plist"];
 		NSDictionary *gameData = [NSDictionary dictionaryWithContentsOfFile:pathToGameData];
@@ -60,6 +53,21 @@
 		_bed = [Furniture furnitureWithData:gameData[@"Bed"]];
 		[self addChild:_bed];
 		
+		_tv = [Furniture furnitureWithData:gameData[@"TV"]];
+		[self addChild:_tv];
+		
+		_fridge = [Furniture furnitureWithData:gameData[@"Fridge"]];
+		[self addChild:_fridge];
+		
+		_couch = [Furniture furnitureWithData:gameData[@"Couch"]];
+		[self addChild:_couch];
+		
+				// Setup the Character Johnny
+		_johnny = [[Character alloc] init];
+		
+		Waypoint *entrancePoint = [[Pathfinder sharedPathfinder] waypoint:@"Entrance"];
+		_johnny.position = entrancePoint.location;
+		[self addChild:_johnny];
 		
 		self.isMouseEnabled = YES;
 	}

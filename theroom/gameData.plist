@@ -8,12 +8,62 @@
 		<string>bed</string>
 		<key>Name</key>
 		<string>Bed</string>
+		<key>ClosestWayPoint</key>
+		<string>Bed</string>
 		<key>PositionInRoom</key>
 		<dict>
 			<key>X</key>
 			<integer>185</integer>
 			<key>Y</key>
 			<integer>194</integer>
+		</dict>
+	</dict>
+	<key>TV</key>
+	<dict>
+		<key>Image</key>
+		<string>tv</string>
+		<key>Name</key>
+		<string>Bed</string>
+		<key>ClosestWayPoint</key>
+		<string>RoomCentre</string>
+		<key>PositionInRoom</key>
+		<dict>
+			<key>X</key>
+			<integer>480</integer>
+			<key>Y</key>
+			<integer>220</integer>
+		</dict>
+	</dict>
+	<key>Fridge</key>
+	<dict>
+		<key>Image</key>
+		<string>fridge</string>
+		<key>Name</key>
+		<string>Fridge</string>
+		<key>ClosestWayPoint</key>
+		<string>Fridge</string>
+		<key>PositionInRoom</key>
+		<dict>
+			<key>X</key>
+			<integer>840</integer>
+			<key>Y</key>
+			<integer>120</integer>
+		</dict>
+	</dict>
+	<key>Couch</key>
+	<dict>
+		<key>Image</key>
+		<string>couchBack</string>
+		<key>Name</key>
+		<string>Couch</string>
+		<key>ClosestWayPoint</key>
+		<string>RoomCentre</string>
+		<key>PositionInRoom</key>
+		<dict>
+			<key>X</key>
+			<integer>360</integer>
+			<key>Y</key>
+			<integer>220</integer>
 		</dict>
 	</dict>
 </dict>

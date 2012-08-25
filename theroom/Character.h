@@ -11,7 +11,8 @@
 
 @interface Character : CCNode
 {
-	CCSprite *_appearance;
+	CCSprite *_appearanceFront;
+	CCSprite *_appearanceBack;
 }
 
 @property (nonatomic, readwrite, retain) NSString *waypointName;

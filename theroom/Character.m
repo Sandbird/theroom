@@ -15,9 +15,15 @@
 	self = [super init];
 	if	(self != nil)
 	{
-		NSString *pathToAppearance = [[NSBundle mainBundle] pathForResource:@"Johnny" ofType:@"png"];
-		_appearance = [CCSprite spriteWithFile:pathToAppearance];
-		[self addChild:_appearance];
+		NSString *pathToAppearanceFront = [[NSBundle mainBundle] pathForResource:@"JohnnyFront" ofType:@"png"];
+		_appearanceFront = [CCSprite spriteWithFile:pathToAppearanceFront];
+		[self addChild:_appearanceFront];
+		
+		NSString *pathToAppearanceBack = [[NSBundle mainBundle] pathForResource:@"JohnnyBack" ofType:@"png"];
+		_appearanceBack = [CCSprite spriteWithFile:pathToAppearanceBack];
+		[self addChild:_appearanceBack];
+		_appearanceBack.visible = NO;
+		
 		
 		_waypointName = @"Entrance";
 	}

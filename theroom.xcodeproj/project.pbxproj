@@ -15,6 +15,14 @@
 		3118D9FF15E93EA400D4518B /* theroom.png in Resources */ = {isa = PBXBuildFile; fileRef = 3118D9FE15E93EA400D4518B /* theroom.png */; };
 		3118DA0315E94BB300D4518B /* bed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3118DA0215E94BB300D4518B /* bed.png */; };
 		3118DA0615E94BFE00D4518B /* Furniture.m in Sources */ = {isa = PBXBuildFile; fileRef = 3118DA0515E94BFE00D4518B /* Furniture.m */; };
+		3132B42015E981710097ED8A /* JohnnyBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B41E15E981710097ED8A /* JohnnyBack.png */; };
+		3132B42115E981710097ED8A /* JohnnyFront.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B41F15E981710097ED8A /* JohnnyFront.png */; };
+		3132B42915E985030097ED8A /* tv.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B42715E985030097ED8A /* tv.png */; };
+		3132B42A15E985030097ED8A /* tvActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B42815E985030097ED8A /* tvActive.png */; };
+		3132B42D15E993580097ED8A /* fridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B42B15E993580097ED8A /* fridge.png */; };
+		3132B42E15E993580097ED8A /* fridgeActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B42C15E993580097ED8A /* fridgeActive.png */; };
+		3132B43115E9952F0097ED8A /* couchBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B42F15E9952F0097ED8A /* couchBack.png */; };
+		3132B43215E9952F0097ED8A /* couchFront.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B43015E9952F0097ED8A /* couchFront.png */; };
 		31EE31B515E8EC0B00DAF6B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B415E8EC0B00DAF6B9 /* QuartzCore.framework */; };
 		31EE31B715E8EC0B00DAF6B9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B615E8EC0B00DAF6B9 /* OpenGL.framework */; };
 		31EE31B915E8EC0B00DAF6B9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B815E8EC0B00DAF6B9 /* OpenAL.framework */; };
@@ -132,11 +140,7 @@
 		31EE333415E8EC0E00DAF6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EE333315E8EC0E00DAF6B9 /* AppDelegate.m */; };
 		31EE333F15E8ED2100DAF6B9 /* StartMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EE333E15E8ED2100DAF6B9 /* StartMenu.m */; };
 		31EE334215E8F8E500DAF6B9 /* RoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EE334115E8F8E500DAF6B9 /* RoomLayer.m */; };
-		31EE334F15E8FB1600DAF6B9 /* iskapur.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334815E8FB1600DAF6B9 /* iskapur.png */; };
-		31EE335015E8FB1600DAF6B9 /* Johnny.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334915E8FB1600DAF6B9 /* Johnny.png */; };
 		31EE335115E8FB1600DAF6B9 /* position.txt in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334A15E8FB1600DAF6B9 /* position.txt */; };
-		31EE335315E8FB1600DAF6B9 /* simi.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334C15E8FB1600DAF6B9 /* simi.png */; };
-		31EE335415E8FB1600DAF6B9 /* sofi.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334D15E8FB1600DAF6B9 /* sofi.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +157,14 @@
 		3118DA0215E94BB300D4518B /* bed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bed.png; path = Resources/bed.png; sourceTree = "<group>"; };
 		3118DA0415E94BFE00D4518B /* Furniture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Furniture.h; sourceTree = "<group>"; };
 		3118DA0515E94BFE00D4518B /* Furniture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Furniture.m; sourceTree = "<group>"; };
+		3132B41E15E981710097ED8A /* JohnnyBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = JohnnyBack.png; path = Resources/JohnnyBack.png; sourceTree = "<group>"; };
+		3132B41F15E981710097ED8A /* JohnnyFront.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = JohnnyFront.png; path = Resources/JohnnyFront.png; sourceTree = "<group>"; };
+		3132B42715E985030097ED8A /* tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tv.png; path = Resources/tv.png; sourceTree = "<group>"; };
+		3132B42815E985030097ED8A /* tvActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tvActive.png; path = Resources/tvActive.png; sourceTree = "<group>"; };
+		3132B42B15E993580097ED8A /* fridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fridge.png; path = Resources/fridge.png; sourceTree = "<group>"; };
+		3132B42C15E993580097ED8A /* fridgeActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fridgeActive.png; path = Resources/fridgeActive.png; sourceTree = "<group>"; };
+		3132B42F15E9952F0097ED8A /* couchBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = couchBack.png; path = Resources/couchBack.png; sourceTree = "<group>"; };
+		3132B43015E9952F0097ED8A /* couchFront.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = couchFront.png; path = Resources/couchFront.png; sourceTree = "<group>"; };
 		31EE31B015E8EC0B00DAF6B9 /* theroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31EE31B415E8EC0B00DAF6B9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		31EE31B615E8EC0B00DAF6B9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -408,11 +420,7 @@
 		31EE333E15E8ED2100DAF6B9 /* StartMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartMenu.m; sourceTree = "<group>"; };
 		31EE334015E8F8E500DAF6B9 /* RoomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLayer.h; sourceTree = "<group>"; };
 		31EE334115E8F8E500DAF6B9 /* RoomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomLayer.m; sourceTree = "<group>"; };
-		31EE334815E8FB1600DAF6B9 /* iskapur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iskapur.png; path = Resources/iskapur.png; sourceTree = "<group>"; };
-		31EE334915E8FB1600DAF6B9 /* Johnny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Johnny.png; path = Resources/Johnny.png; sourceTree = "<group>"; };
 		31EE334A15E8FB1600DAF6B9 /* position.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = position.txt; path = Resources/position.txt; sourceTree = "<group>"; };
-		31EE334C15E8FB1600DAF6B9 /* simi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = simi.png; path = Resources/simi.png; sourceTree = "<group>"; };
-		31EE334D15E8FB1600DAF6B9 /* sofi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sofi.png; path = Resources/sofi.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -857,16 +865,20 @@
 			isa = PBXGroup;
 			children = (
 				3118DA0215E94BB300D4518B /* bed.png */,
-				3118D9FE15E93EA400D4518B /* theroom.png */,
-				31EE334815E8FB1600DAF6B9 /* iskapur.png */,
-				31EE334915E8FB1600DAF6B9 /* Johnny.png */,
-				31EE334A15E8FB1600DAF6B9 /* position.txt */,
-				31EE334C15E8FB1600DAF6B9 /* simi.png */,
-				31EE334D15E8FB1600DAF6B9 /* sofi.png */,
-				31EE332F15E8EC0E00DAF6B9 /* Prefix.pch */,
-				31EE333015E8EC0E00DAF6B9 /* main.m */,
-				3118D9E015E90E6000D4518B /* gameData.plist */,
+				3132B42F15E9952F0097ED8A /* couchBack.png */,
+				3132B43015E9952F0097ED8A /* couchFront.png */,
 				3118D9EB15E91AD900D4518B /* floorPlan.plist */,
+				3132B42B15E993580097ED8A /* fridge.png */,
+				3132B42C15E993580097ED8A /* fridgeActive.png */,
+				3118D9E015E90E6000D4518B /* gameData.plist */,
+				3132B41E15E981710097ED8A /* JohnnyBack.png */,
+				3132B41F15E981710097ED8A /* JohnnyFront.png */,
+				31EE333015E8EC0E00DAF6B9 /* main.m */,
+				31EE334A15E8FB1600DAF6B9 /* position.txt */,
+				31EE332F15E8EC0E00DAF6B9 /* Prefix.pch */,
+				3118D9FE15E93EA400D4518B /* theroom.png */,
+				3132B42715E985030097ED8A /* tv.png */,
+				3132B42815E985030097ED8A /* tvActive.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -927,15 +939,19 @@
 				31EE31CA15E8EC0B00DAF6B9 /* fps_images.png in Resources */,
 				31EE31CC15E8EC0B00DAF6B9 /* icon.icns in Resources */,
 				31EE331215E8EC0E00DAF6B9 /* ChangeLog in Resources */,
-				31EE334F15E8FB1600DAF6B9 /* iskapur.png in Resources */,
-				31EE335015E8FB1600DAF6B9 /* Johnny.png in Resources */,
 				31EE335115E8FB1600DAF6B9 /* position.txt in Resources */,
-				31EE335315E8FB1600DAF6B9 /* simi.png in Resources */,
-				31EE335415E8FB1600DAF6B9 /* sofi.png in Resources */,
 				3118D9E115E90E6000D4518B /* gameData.plist in Resources */,
 				3118D9EC15E91AD900D4518B /* floorPlan.plist in Resources */,
 				3118D9FF15E93EA400D4518B /* theroom.png in Resources */,
 				3118DA0315E94BB300D4518B /* bed.png in Resources */,
+				3132B42015E981710097ED8A /* JohnnyBack.png in Resources */,
+				3132B42115E981710097ED8A /* JohnnyFront.png in Resources */,
+				3132B42915E985030097ED8A /* tv.png in Resources */,
+				3132B42A15E985030097ED8A /* tvActive.png in Resources */,
+				3132B42D15E993580097ED8A /* fridge.png in Resources */,
+				3132B42E15E993580097ED8A /* fridgeActive.png in Resources */,
+				3132B43115E9952F0097ED8A /* couchBack.png in Resources */,
+				3132B43215E9952F0097ED8A /* couchFront.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
