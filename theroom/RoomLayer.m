@@ -37,7 +37,7 @@
 	if (self != nil)
 	{
 		// Setup the 
-		NSString *path = [[NSBundle mainBundle] pathForResource:@"herb" ofType:@"png"];
+		NSString *path = [[NSBundle mainBundle] pathForResource:@"theroom" ofType:@"png"];
 		_background = [CCSprite spriteWithFile:path];
 		NSSize winSize = [[CCDirector sharedDirector] winSize];
 		_background.position = ccp( winSize.width / 2, winSize.height / 2);
