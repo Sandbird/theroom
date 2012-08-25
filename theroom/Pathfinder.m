@@ -7,6 +7,7 @@
 //
 
 #import "Pathfinder.h"
+#import "cocos2d.h"
 #import "Waypoint.h"
 
 @implementation Pathfinder
@@ -54,6 +55,26 @@ static Pathfinder *sharedPathfinder = nil;
 
 - (NSString *)closestLocationTo:(CGPoint)point
 {
+	// Search through the waypoints for the closest waypoint to the click
+	__block Waypoint *closestWaypoint = nil;
+	__block float minDistanceSquared = FLT_MAX;
+	
+	[_waypoints enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+	 {
+		 Waypoint *waypoint = (Waypoint *)obj;
+		 float distanceSquared = ccpDistanceSQ(point, waypoint.location);
+		 if (closestWaypoint == nil || distanceSquared <= minDistanceSquared)
+		 {
+			 closestWaypoint = waypoint;
+			 minDistanceSquared = distanceSquared;
+		 }
+	 }];
+	
+	if (closestWaypoint != nil)
+	{
+		return closestWaypoint.name;
+	}
+	
 	return nil;
 }
 

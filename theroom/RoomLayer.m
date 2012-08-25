@@ -57,9 +57,9 @@
 
 - (BOOL)ccMouseUp:(NSEvent *)event
 {
-	NSLog(@"Moustup : %@", event);
-	
 	// Take the event and send johnny to the location
+	CGPoint mouseLocation = event.locationInWindow;
+	NSLog(@"Closest Location : %@", [[Pathfinder sharedPathfinder] closestLocationTo:mouseLocation]);
 	
 	return YES;
 }
