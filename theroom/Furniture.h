@@ -15,6 +15,8 @@
 	CCSprite *_active;
 	NSString *_name;
 	CGPoint _positionInRoom;
+	
+	BOOL _activeState;
 }
 
 @property (nonatomic, readonly) NSString *name;

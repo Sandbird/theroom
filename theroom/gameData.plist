@@ -6,6 +6,8 @@
 	<dict>
 		<key>Image</key>
 		<string>bed</string>
+		<key>ActiveImage</key>
+		<string>bedActive</string>
 		<key>Name</key>
 		<string>Bed</string>
 		<key>ClosestWayPoint</key>
@@ -40,6 +42,8 @@
 	<dict>
 		<key>Image</key>
 		<string>fridge</string>
+		<key>ActiveImage</key>
+		<string>fridgeActive</string>
 		<key>Name</key>
 		<string>Fridge</string>
 		<key>ClosestWayPoint</key>
@@ -52,26 +56,12 @@
 			<integer>176</integer>
 		</dict>
 	</dict>
-	<key>Couch</key>
-	<dict>
-		<key>Image</key>
-		<string>couchBack</string>
-		<key>Name</key>
-		<string>Couch</string>
-		<key>ClosestWayPoint</key>
-		<string>RoomCentre</string>
-		<key>PositionInRoom</key>
-		<dict>
-			<key>X</key>
-			<integer>416</integer>
-			<key>Y</key>
-			<integer>214</integer>
-		</dict>
-	</dict>
 	<key>Phone</key>
 	<dict>
 		<key>Image</key>
 		<string>phone</string>
+		<key>ActiveImage</key>
+		<string>phoneActive</string>
 		<key>Name</key>
 		<string>Phone</string>
 		<key>ClosestWayPoint</key>

@@ -51,16 +51,16 @@
 {
 	_active.visible = NO;
 	_front.visible = YES;
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"kFurnitureActive" object:self];
+
+	_activeState = NO;
 }
 
 - (void)showActive
 {
 	_active.visible = YES;
 	_front.visible = NO;
-
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"kFurnitureNotActive" object:self];
+	
+	_activeState = YES;
 }
 
 - (BOOL)ccMouseUp:(NSEvent *)event
@@ -71,7 +71,14 @@
 
 	if (ABS(eventLocation.x) <= halfSize.x && ABS(eventLocation.y) <= halfSize.y)
 	{
-		[self showActive];
+		if (_activeState == YES)
+		{
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"kFurnitureNotActive" object:self];
+		}
+		else
+		{
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"kFurnitureActive" object:self];
+		}
 		NSLog(@"Mouse Up Inside Furniture, swallowing event");
 		return YES;
 	}
