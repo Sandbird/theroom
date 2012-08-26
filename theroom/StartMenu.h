@@ -12,6 +12,7 @@
 // StartMenu
 @interface StartMenu : CCLayer
 {
+    CCLabelTTF *_titleLabel;
 }
 
 // returns a CCScene that contains the StartMenu  as the only child
