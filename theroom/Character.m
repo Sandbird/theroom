@@ -28,12 +28,12 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 	self = [super init];
 	if	(self != nil)
 	{
-		NSString *pathToAppearanceFront = [[NSBundle mainBundle] pathForResource:@"JohnnyFront" ofType:@"png"];
+		NSString *pathToAppearanceFront = [[NSBundle mainBundle] pathForResource:@"johnnyFront" ofType:@"png"];
 		_appearanceFront = [CCSprite spriteWithFile:pathToAppearanceFront];
 		_appearanceFront.position = ccp( 0, _appearanceFront.contentSize.height / 2);
 		[self addChild:_appearanceFront];
 		
-		NSString *pathToAppearanceBack = [[NSBundle mainBundle] pathForResource:@"JohnnyBack" ofType:@"png"];
+		NSString *pathToAppearanceBack = [[NSBundle mainBundle] pathForResource:@"johnnyBack" ofType:@"png"];
 		_appearanceBack = [CCSprite spriteWithFile:pathToAppearanceBack];
 		_appearanceBack.position = ccp( 0, _appearanceBack.contentSize.height / 2);
 		[self addChild:_appearanceBack];
