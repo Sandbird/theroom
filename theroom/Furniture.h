@@ -14,12 +14,14 @@
 	CCSprite *_front;
 	CCSprite *_active;
 	NSString *_name;
+	NSString *_closestWaypointName;
 	CGPoint _positionInRoom;
 	
 	BOOL _activeState;
 }
 
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *closestWaypointName;
 @property (nonatomic, readonly) CGPoint positionInRoom;
 
 + (id)furnitureWithData:(NSDictionary *)data;

@@ -13,6 +13,7 @@
 @implementation Furniture
 
 @synthesize name = _name;
+@synthesize closestWaypointName = _closestWaypointName;
 @synthesize positionInRoom = _positionInRoom;
 
 + (id)furnitureWithData:(NSDictionary *)data
@@ -34,6 +35,7 @@
 		[self addChild:_active];
 		
 		_name = [[data objectForKey:@"Name"] retain];
+		_closestWaypointName = [[data objectForKey:@"ClosestWayPoint"] retain];
 		_positionInRoom = CGPointFromDictionary([data objectForKey:@"PositionInRoom"]);
 		self.position = _positionInRoom;
 		self.contentSize = _front.contentSize;
@@ -91,6 +93,7 @@
 {
 	[[[CCDirector sharedDirector] eventDispatcher] removeMouseDelegate:self];
 	[_name release];
+	[_closestWaypointName release];
 	
 	[super dealloc];
 }

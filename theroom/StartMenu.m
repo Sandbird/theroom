@@ -42,7 +42,6 @@
 		CCLabelTTF *playLabel = [CCLabelTTF labelWithString:@"Play Game" fontName:@"Arial" fontSize:32];
 		CCMenuItem *playMenuItem = [CCMenuItemLabel itemWithLabel:playLabel block:^(id sender)
 									{
-										NSLog(@"Play");
 										[[CCDirector sharedDirector] pushScene:[RoomLayer scene]];
 									}];
 		

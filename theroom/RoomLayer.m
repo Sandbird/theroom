@@ -169,7 +169,7 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 	FiniteState *idle = [FiniteState stateWithName:kRoomIdleState];
 	[idle addEdge:^NSString *(ccTime delta)
 	 {
-		 if (_targetFurniture != nil)
+		 if (SELF->_targetFurniture != nil)
 		 {
 			 return kRoomInteractWithFurnitureState;
 		 }
@@ -179,6 +179,20 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 	
 	// Interacting With Furniture State
 	FiniteState *interactingWithFurnitureState = [FiniteState stateWithName:kRoomInteractWithFurnitureState];
+	interactingWithFurnitureState.stateEnter = ^(void)
+	{
+		[SELF->_johnny moveTo:_targetFurniture];
+		SELF->_isInteractive = NO;
+	};
+	[interactingWithFurnitureState addEdge:^NSString *(ccTime delta)
+	{
+		if (SELF->_johnny.finishedActions == YES)
+		{
+			return kRoomIdleState;
+		}
+		
+		return nil;
+	}];
 	
 	_room = [[FiniteStateMachine alloc] initWithInitialState:enteringRoom];
 	[_room addStates:sleepState, idle, interactingWithFurnitureState, nil];
