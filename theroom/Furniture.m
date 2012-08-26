@@ -27,19 +27,40 @@
 		NSString *pathToImage = [[NSBundle mainBundle] pathForResource:[data objectForKey:@"Image"] ofType:@"png"];
 		_front = [CCSprite spriteWithFile:pathToImage];
 		[self addChild:_front];
+		
+		pathToImage = [[NSBundle mainBundle] pathForResource:[data objectForKey:@"ActiveImage"] ofType:@"png"];
+		_active = [CCSprite spriteWithFile:pathToImage];
+		[self addChild:_active];
+		
 		_name = [[data objectForKey:@"Name"] retain];
 		_positionInRoom = CGPointFromDictionary([data objectForKey:@"PositionInRoom"]);
 		self.position = _positionInRoom;
 		self.contentSize = _front.contentSize;
 		
+		[self showInactive];
 		
 		// Register for mouse events
 		CCDirector *director = [CCDirector sharedDirector];
 		[[director eventDispatcher] addMouseDelegate:self priority:0];
-
 	}
 	
 	return self;
+}
+
+- (void)showInactive
+{
+	_active.visible = NO;
+	_front.visible = YES;
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"kFurnitureActive" object:self];
+}
+
+- (void)showActive
+{
+	_active.visible = YES;
+	_front.visible = NO;
+
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"kFurnitureNotActive" object:self];
 }
 
 - (BOOL)ccMouseUp:(NSEvent *)event
@@ -50,6 +71,7 @@
 
 	if (ABS(eventLocation.x) <= halfSize.x && ABS(eventLocation.y) <= halfSize.y)
 	{
+		[self showActive];
 		NSLog(@"Mouse Up Inside Furniture, swallowing event");
 		return YES;
 	}
@@ -61,6 +83,7 @@
 {
 	[[[CCDirector sharedDirector] eventDispatcher] removeMouseDelegate:self];
 	[_name release];
+	
 	[super dealloc];
 }
 

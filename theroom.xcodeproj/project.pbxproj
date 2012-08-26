@@ -144,6 +144,7 @@
 		31EE333415E8EC0E00DAF6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EE333315E8EC0E00DAF6B9 /* AppDelegate.m */; };
 		31EE333F15E8ED2100DAF6B9 /* StartMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EE333E15E8ED2100DAF6B9 /* StartMenu.m */; };
 		31EE334215E8F8E500DAF6B9 /* RoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EE334115E8F8E500DAF6B9 /* RoomLayer.m */; };
+		A060CAAF15EA6F5C00F4F558 /* Notifier.m in Sources */ = {isa = PBXBuildFile; fileRef = A060CAAE15EA6F5C00F4F558 /* Notifier.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -429,6 +430,8 @@
 		31EE333E15E8ED2100DAF6B9 /* StartMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartMenu.m; sourceTree = "<group>"; };
 		31EE334015E8F8E500DAF6B9 /* RoomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLayer.h; sourceTree = "<group>"; };
 		31EE334115E8F8E500DAF6B9 /* RoomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomLayer.m; sourceTree = "<group>"; };
+		A060CAAD15EA6F5B00F4F558 /* Notifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notifier.h; sourceTree = "<group>"; };
+		A060CAAE15EA6F5C00F4F558 /* Notifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notifier.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +495,8 @@
 				3118DA0415E94BFE00D4518B /* Furniture.h */,
 				3118DA0515E94BFE00D4518B /* Furniture.m */,
 				31EE31CE15E8EC0B00DAF6B9 /* libs */,
+				A060CAAD15EA6F5B00F4F558 /* Notifier.h */,
+				A060CAAE15EA6F5C00F4F558 /* Notifier.m */,
 				3118D9ED15E91BFC00D4518B /* Pathfinder.h */,
 				3118D9EE15E91BFC00D4518B /* Pathfinder.m */,
 				31EE31C115E8EC0B00DAF6B9 /* Resources */,
@@ -1088,6 +1093,7 @@
 				3118DA0615E94BFE00D4518B /* Furniture.m in Sources */,
 				3132B43715E997C90097ED8A /* FiniteState.m in Sources */,
 				3132B43815E997C90097ED8A /* FiniteStateMachine.m in Sources */,
+				A060CAAF15EA6F5C00F4F558 /* Notifier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,6 +1169,7 @@
 				GCC_PREFIX_HEADER = theroom/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"theroom/libs/kazmath/include\"";
 				INFOPLIST_FILE = theroom/Resources/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
@@ -1183,6 +1190,7 @@
 				GCC_PREFIX_HEADER = theroom/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"theroom/libs/kazmath/include\"";
 				INFOPLIST_FILE = theroom/Resources/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
