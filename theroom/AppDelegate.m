@@ -27,6 +27,9 @@
 	// Use kCCDirectorResize_NoScale if you don't want auto-scaling.
 	[director setResizeMode:kCCDirectorResize_AutoScale];
 	
+	// Disable stats
+	[director setDisplayStats:NO];
+	
 	// Enable "moving" mouse event. Default no.
 	[window_ setAcceptsMouseMovedEvents:NO];
 	

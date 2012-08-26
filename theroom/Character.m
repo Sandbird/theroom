@@ -8,9 +8,15 @@
 
 #import "Character.h"
 
+#import "FiniteState.h"
+#import "FiniteStateMachine.h"
+
 @implementation Character
 
+static NSString *kCharacterIdleState = @"characterIdleState";
+
 @synthesize waypointName = _wayPointName;
+@synthesize finishedActions = _finishedActions;
 
 - (id)init
 {
@@ -29,9 +35,64 @@
 		_appearanceBack.visible = NO;
 		
 		_wayPointName = @"Entrance";
+		_finishedActions = NO;
+		
+		[self setupStateMachine];
 	}
 	
 	return self;
+}
+
+- (void)onEnter
+{
+	[super onEnter];
+	[_behaviour start];
+}
+
+- (void)update:(ccTime)delta
+{
+	[_behaviour update:delta];
+}
+
+- (void)onExit
+{
+	[_behaviour stop];
+	[super onExit];
+}
+
+- (void)moveFrom:(NSString *)locationName to:(NSString *)destinationName
+{
+	
+}
+
+#pragma mark - Private
+
+- (void)setupStateMachine
+{
+	DEFINE_BLOCK_SELF
+	// Idle State
+	FiniteState *idleState = [FiniteState stateWithName:kCharacterIdleState];
+	idleState.stateEnter = ^(void)
+	{
+		SELF->_finishedActions = YES;
+	};
+	
+	// Interacting with furniture State
+	
+	// Movement State
+	
+	
+	// The actual state machine
+	_behaviour = [[FiniteStateMachine alloc] initWithInitialState:idleState];
+}
+
+#pragma mark -
+
+- (void)dealloc
+{
+	[_behaviour release];
+	
+	[super dealloc];
 }
 
 @end

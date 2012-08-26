@@ -24,6 +24,7 @@
 	Furniture *_phone;
 	Character *_johnny;
 	
+	BOOL _isInteractive;
 	FiniteStateMachine *_room;
 }
 
