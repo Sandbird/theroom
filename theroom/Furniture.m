@@ -7,12 +7,14 @@
 //
 
 #import "Furniture.h"
+#import "NotificationConstants.h"
 #import "UtilityFunctions.h"
 #import "SimpleAudioEngine.h"
 
 @implementation Furniture
 
 @synthesize name = _name;
+@synthesize closestWaypointName = _closestWaypointName;
 @synthesize positionInRoom = _positionInRoom;
 
 + (id)furnitureWithData:(NSDictionary *)data
@@ -34,6 +36,7 @@
 		[self addChild:_active];
 		
 		_name = [[data objectForKey:@"Name"] retain];
+		_closestWaypointName = [[data objectForKey:@"ClosestWayPoint"] retain];
 		_positionInRoom = CGPointFromDictionary([data objectForKey:@"PositionInRoom"]);
 		self.position = _positionInRoom;
 		self.contentSize = _front.contentSize;
@@ -79,11 +82,11 @@
 	{
 		if (_activeState == YES)
 		{
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"kFurnitureNotActive" object:self];
+			[[NSNotificationCenter defaultCenter] postNotificationName:kFurnitureNotActive object:self];
 		}
 		else
 		{
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"kFurnitureActive" object:self];
+			[[NSNotificationCenter defaultCenter] postNotificationName:kFurnitureActive object:self];
 		}
 		NSLog(@"Mouse Up Inside Furniture, swallowing event");
 		return YES;
@@ -96,6 +99,7 @@
 {
 	[[[CCDirector sharedDirector] eventDispatcher] removeMouseDelegate:self];
 	[_name release];
+	[_closestWaypointName release];
 	
 	[super dealloc];
 }

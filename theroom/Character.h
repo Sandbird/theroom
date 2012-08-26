@@ -11,6 +11,7 @@
 
 // Forward Declarations
 @class FiniteStateMachine;
+@class Furniture;
 
 @interface Character : CCNode
 {
@@ -19,6 +20,7 @@
 	NSString *_wayPointName;
 	
 	BOOL _finishedActions;
+	Furniture *_targetFurniture;
 	FiniteStateMachine *_behaviour;
 }
 
@@ -26,6 +28,7 @@
 @property (nonatomic, readonly) BOOL finishedActions;
 
 - (void)update:(ccTime)delta;
+- (void)moveTo:(Furniture *)target;
 - (void)moveFrom:(NSString *)locationName to:(NSString *)destinationName;
 
 @end

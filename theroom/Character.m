@@ -8,12 +8,15 @@
 
 #import "Character.h"
 
+#import "Furniture.h"
 #import "FiniteState.h"
 #import "FiniteStateMachine.h"
 
 @implementation Character
 
 static NSString *kCharacterIdleState = @"characterIdleState";
+static NSString *kCharacterMovementState = @"characterMovementState";
+static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithFurnitureState";
 
 @synthesize waypointName = _wayPointName;
 @synthesize finishedActions = _finishedActions;
@@ -36,6 +39,7 @@ static NSString *kCharacterIdleState = @"characterIdleState";
 		
 		_wayPointName = @"Entrance";
 		_finishedActions = NO;
+		_targetFurniture = nil;
 		
 		[self setupStateMachine];
 	}
@@ -60,6 +64,15 @@ static NSString *kCharacterIdleState = @"characterIdleState";
 	[super onExit];
 }
 
+- (void)moveTo:(Furniture *)target
+{
+	if (_targetFurniture == nil)
+	{
+		_targetFurniture = target;
+		_finishedActions = NO;
+	}
+}
+
 - (void)moveFrom:(NSString *)locationName to:(NSString *)destinationName
 {
 	
@@ -76,14 +89,40 @@ static NSString *kCharacterIdleState = @"characterIdleState";
 	{
 		SELF->_finishedActions = YES;
 	};
+	[idleState addEdge:^NSString *(ccTime delta)
+	 {
+		 if (SELF->_targetFurniture != nil)
+		 {
+//			 if([SELF->_targetFurniture.closestWaypointName isEqualToString:SELF->_wayPointName] == YES)
+//			 {
+				 return kCharacterInteractWithFurnitureState;
+//			 }
+//			 else
+//			 {
+//				 return kCharacterMovementState;
+//			 }
+		 }
+		 
+		 return nil;
+		 
+	 }];
 	
 	// Interacting with furniture State
+	FiniteState *interactWithFurnitureState = [FiniteState stateWithName:kCharacterInteractWithFurnitureState];
+	interactWithFurnitureState.stateEnter = ^(void)
+	{
+		SELF->_finishedActions = NO;
+		[SELF->_targetFurniture showActive];
+		SELF->_appearanceBack.visible = NO;
+		SELF->_appearanceFront.visible = NO;
+	};
 	
 	// Movement State
 	
 	
 	// The actual state machine
 	_behaviour = [[FiniteStateMachine alloc] initWithInitialState:idleState];
+	[_behaviour addStates:interactWithFurnitureState, nil];
 }
 
 #pragma mark -

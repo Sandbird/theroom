@@ -23,6 +23,7 @@
 		3132B43815E997C90097ED8A /* FiniteStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3132B43615E997C90097ED8A /* FiniteStateMachine.m */; };
 		3132B43F15E9B1510097ED8A /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B43D15E9B1510097ED8A /* phone.png */; };
 		3132B44015E9B1510097ED8A /* phoneActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B43E15E9B1510097ED8A /* phoneActive.png */; };
+		31DB2D4015EA7B59002A0528 /* NotificationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DB2D3F15EA7B59002A0528 /* NotificationConstants.m */; };
 		31EE31B515E8EC0B00DAF6B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B415E8EC0B00DAF6B9 /* QuartzCore.framework */; };
 		31EE31B715E8EC0B00DAF6B9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B615E8EC0B00DAF6B9 /* OpenGL.framework */; };
 		31EE31B915E8EC0B00DAF6B9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B815E8EC0B00DAF6B9 /* OpenAL.framework */; };
@@ -174,6 +175,8 @@
 		3132B43615E997C90097ED8A /* FiniteStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiniteStateMachine.m; sourceTree = "<group>"; };
 		3132B43D15E9B1510097ED8A /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phone.png; path = Resources/phone.png; sourceTree = "<group>"; };
 		3132B43E15E9B1510097ED8A /* phoneActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phoneActive.png; path = Resources/phoneActive.png; sourceTree = "<group>"; };
+		31DB2D3E15EA7B59002A0528 /* NotificationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationConstants.h; sourceTree = "<group>"; };
+		31DB2D3F15EA7B59002A0528 /* NotificationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationConstants.m; sourceTree = "<group>"; };
 		31EE31B015E8EC0B00DAF6B9 /* theroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31EE31B415E8EC0B00DAF6B9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		31EE31B615E8EC0B00DAF6B9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -501,6 +504,8 @@
 				3118DA0415E94BFE00D4518B /* Furniture.h */,
 				3118DA0515E94BFE00D4518B /* Furniture.m */,
 				31EE31CE15E8EC0B00DAF6B9 /* libs */,
+				31DB2D3E15EA7B59002A0528 /* NotificationConstants.h */,
+				31DB2D3F15EA7B59002A0528 /* NotificationConstants.m */,
 				A060CAAD15EA6F5B00F4F558 /* Notifier.h */,
 				A060CAAE15EA6F5C00F4F558 /* Notifier.m */,
 				3118D9ED15E91BFC00D4518B /* Pathfinder.h */,
@@ -1106,6 +1111,7 @@
 				3132B43715E997C90097ED8A /* FiniteState.m in Sources */,
 				3132B43815E997C90097ED8A /* FiniteStateMachine.m in Sources */,
 				A060CAAF15EA6F5C00F4F558 /* Notifier.m in Sources */,
+				31DB2D4015EA7B59002A0528 /* NotificationConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

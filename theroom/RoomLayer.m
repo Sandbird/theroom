@@ -12,6 +12,7 @@
 #import "FiniteState.h"
 #import "FiniteStateMachine.h"
 #import "Furniture.h"
+#import "NotificationConstants.h"
 #import "Pathfinder.h"
 #import "UtilityFunctions.h"
 #import "Waypoint.h"
@@ -67,10 +68,7 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 		_fridge = [Furniture furnitureWithData:[gameData objectForKey:@"Fridge"]];
 		[self addChild:_fridge];
 		
-		_couch = [Furniture furnitureWithData:[gameData objectForKey:@"Couch"]];
-		[self addChild:_couch];
-		
-				// Setup the Character Johnny
+		// Setup the Character Johnny
 		_johnny = [[Character alloc] init];
 		
 		Waypoint *entrancePoint = [[Pathfinder sharedPathfinder] waypoint:@"Entrance"];
@@ -89,6 +87,9 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 		[self setupStateMachine];
 		
 		[self scheduleUpdate];
+		
+		// Register for game notifications
+		[self setupObservations];
 	}
 	
 	return self;
@@ -172,12 +173,56 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 	
 	// Idle State
 	FiniteState *idle = [FiniteState stateWithName:kRoomIdleState];
+	[idle addEdge:^NSString *(ccTime delta)
+	 {
+		 if (SELF->_targetFurniture != nil)
+		 {
+			 return kRoomInteractWithFurnitureState;
+		 }
+		 
+		 return nil;
+	 }];
 	
 	// Interacting With Furniture State
 	FiniteState *interactingWithFurnitureState = [FiniteState stateWithName:kRoomInteractWithFurnitureState];
+	interactingWithFurnitureState.stateEnter = ^(void)
+	{
+		[SELF->_johnny moveTo:_targetFurniture];
+		SELF->_isInteractive = NO;
+	};
+	[interactingWithFurnitureState addEdge:^NSString *(ccTime delta)
+	{
+		if (SELF->_johnny.finishedActions == YES)
+		{
+			return kRoomIdleState;
+		}
+		
+		return nil;
+	}];
 	
 	_room = [[FiniteStateMachine alloc] initWithInitialState:enteringRoom];
 	[_room addStates:sleepState, idle, interactingWithFurnitureState, nil];
+}
+
+- (void)setupObservations
+{
+	[[NSNotificationCenter defaultCenter] addObserverForName:kFurnitureNotActive object:nil queue:nil usingBlock:^(NSNotification *note)
+	 {
+		 NSLog(@"WARNING: No response implemented for handling making furniture inactive");
+	 }];
+	[[NSNotificationCenter defaultCenter] addObserverForName:kFurnitureActive object:nil queue:nil usingBlock:^(NSNotification *note)
+	 {
+		 if (_targetFurniture == nil)
+		 {
+			 _targetFurniture = (Furniture *) note.object;
+		 }
+		 else
+		 {
+			 NSLog(@"WARNING: trying to set %@ as active furniture but %@ is already active",
+				   ((Furniture *)note.object).name,
+				   _targetFurniture.name);
+		 }
+	 }];
 }
 
 #pragma mark -

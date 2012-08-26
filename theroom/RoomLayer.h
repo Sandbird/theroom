@@ -16,6 +16,7 @@
 @class CDSoundSource;
 @interface RoomLayer : CCLayer
 {
+	// Elements Of The Game World
 	CCSprite *_background;
 	Furniture *_bed;
 	Furniture *_tv;
@@ -27,6 +28,8 @@
 	CDSoundSource *backgroundNoise;
 	
 	BOOL _isInteractive;
+	
+	// Game Loop State Machine
 	FiniteStateMachine *_room;
 }
 
