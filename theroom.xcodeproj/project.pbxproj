@@ -144,6 +144,10 @@
 		A060CAB315EA755E00F4F558 /* bedActive.png in Resources */ = {isa = PBXBuildFile; fileRef = A060CAB015EA755C00F4F558 /* bedActive.png */; };
 		A060CAB415EA755E00F4F558 /* johnnyBack.png in Resources */ = {isa = PBXBuildFile; fileRef = A060CAB115EA755C00F4F558 /* johnnyBack.png */; };
 		A060CAB515EA755E00F4F558 /* johnnyFront.png in Resources */ = {isa = PBXBuildFile; fileRef = A060CAB215EA755D00F4F558 /* johnnyFront.png */; };
+		A060CABA15EA7A6700F4F558 /* riders of chord.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A060CAB915EA7A6700F4F558 /* riders of chord.mp3 */; };
+		A060CABC15EA7D3700F4F558 /* room_tone_bg_loop.wav in Resources */ = {isa = PBXBuildFile; fileRef = A060CABB15EA7D3700F4F558 /* room_tone_bg_loop.wav */; };
+		A060CABE15EA829100F4F558 /* fridge_noiseloop-B-ath-stereo.wav in Resources */ = {isa = PBXBuildFile; fileRef = A060CABD15EA829100F4F558 /* fridge_noiseloop-B-ath-stereo.wav */; };
+		A060CAC015EA85F200F4F558 /* home again.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A060CABF15EA85F200F4F558 /* home again.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -430,6 +434,10 @@
 		A060CAB015EA755C00F4F558 /* bedActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bedActive.png; path = Resources/bedActive.png; sourceTree = "<group>"; };
 		A060CAB115EA755C00F4F558 /* johnnyBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = johnnyBack.png; path = Resources/johnnyBack.png; sourceTree = "<group>"; };
 		A060CAB215EA755D00F4F558 /* johnnyFront.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = johnnyFront.png; path = Resources/johnnyFront.png; sourceTree = "<group>"; };
+		A060CAB915EA7A6700F4F558 /* riders of chord.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "riders of chord.mp3"; path = "Resources/riders of chord.mp3"; sourceTree = "<group>"; };
+		A060CABB15EA7D3700F4F558 /* room_tone_bg_loop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = room_tone_bg_loop.wav; path = Resources/room_tone_bg_loop.wav; sourceTree = "<group>"; };
+		A060CABD15EA829100F4F558 /* fridge_noiseloop-B-ath-stereo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "fridge_noiseloop-B-ath-stereo.wav"; path = "Resources/fridge_noiseloop-B-ath-stereo.wav"; sourceTree = "<group>"; };
+		A060CABF15EA85F200F4F558 /* home again.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "home again.mp3"; path = "Resources/home again.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -879,6 +887,10 @@
 		31EE332E15E8EC0E00DAF6B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A060CABF15EA85F200F4F558 /* home again.mp3 */,
+				A060CABD15EA829100F4F558 /* fridge_noiseloop-B-ath-stereo.wav */,
+				A060CABB15EA7D3700F4F558 /* room_tone_bg_loop.wav */,
+				A060CAB915EA7A6700F4F558 /* riders of chord.mp3 */,
 				A060CAB015EA755C00F4F558 /* bedActive.png */,
 				A060CAB115EA755C00F4F558 /* johnnyBack.png */,
 				A060CAB215EA755D00F4F558 /* johnnyFront.png */,
@@ -967,6 +979,10 @@
 				A060CAB315EA755E00F4F558 /* bedActive.png in Resources */,
 				A060CAB415EA755E00F4F558 /* johnnyBack.png in Resources */,
 				A060CAB515EA755E00F4F558 /* johnnyFront.png in Resources */,
+				A060CABA15EA7A6700F4F558 /* riders of chord.mp3 in Resources */,
+				A060CABC15EA7D3700F4F558 /* room_tone_bg_loop.wav in Resources */,
+				A060CABE15EA829100F4F558 /* fridge_noiseloop-B-ath-stereo.wav in Resources */,
+				A060CAC015EA85F200F4F558 /* home again.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

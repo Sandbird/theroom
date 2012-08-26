@@ -15,6 +15,7 @@
 #import "Pathfinder.h"
 #import "UtilityFunctions.h"
 #import "Waypoint.h"
+#import "SimpleAudioEngine.h"
 
 
 @implementation RoomLayer
@@ -81,6 +82,10 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 		
 		self.isMouseEnabled = YES;
 		
+		backgroundNoise = [[SimpleAudioEngine sharedEngine] soundSourceForFile:@"room_tone_bg_loop.wav"];
+		backgroundNoise.looping = YES;
+//		[backgroundNoise play];
+		
 		[self setupStateMachine];
 		
 		[self scheduleUpdate];
@@ -93,6 +98,7 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 {
 	[super onEnter];
 	[_room start];
+	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"riders of chord.mp3" loop:YES];
 }
 
 - (void)update:(ccTime)delta

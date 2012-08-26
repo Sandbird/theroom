@@ -8,6 +8,7 @@
 
 #import "Furniture.h"
 #import "UtilityFunctions.h"
+#import "SimpleAudioEngine.h"
 
 @implementation Furniture
 
@@ -37,6 +38,9 @@
 		self.position = _positionInRoom;
 		self.contentSize = _front.contentSize;
 		
+		_sound = [[SimpleAudioEngine sharedEngine] soundSourceForFile:[data objectForKey:@"Sound"]];
+		_sound.looping = YES;
+		
 		[self showInactive];
 		
 		// Register for mouse events
@@ -51,6 +55,7 @@
 {
 	_active.visible = NO;
 	_front.visible = YES;
+	[_sound stop];
 
 	_activeState = NO;
 }
@@ -59,6 +64,7 @@
 {
 	_active.visible = YES;
 	_front.visible = NO;
+	[_sound play];
 	
 	_activeState = YES;
 }

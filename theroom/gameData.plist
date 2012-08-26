@@ -55,6 +55,8 @@
 			<key>Y</key>
 			<integer>176</integer>
 		</dict>
+		<key>Sound</key>
+		<string>fridge_noiseloop-B-ath-stereo.wav</string>
 	</dict>
 	<key>Phone</key>
 	<dict>

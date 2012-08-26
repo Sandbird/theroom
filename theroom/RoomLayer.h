@@ -13,7 +13,7 @@
 @class Character;
 @class FiniteStateMachine;
 @class Furniture;
-
+@class CDSoundSource;
 @interface RoomLayer : CCLayer
 {
 	CCSprite *_background;
@@ -23,6 +23,8 @@
 	Furniture *_couch;
 	Furniture *_phone;
 	Character *_johnny;
+	
+	CDSoundSource *backgroundNoise;
 	
 	BOOL _isInteractive;
 	FiniteStateMachine *_room;

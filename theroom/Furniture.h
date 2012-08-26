@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+@class CDSoundSource;
 @interface Furniture : CCNode <CCMouseEventDelegate>
 {
 	CCSprite *_front;
 	CCSprite *_active;
 	NSString *_name;
 	CGPoint _positionInRoom;
+	CDSoundSource *_sound;
 	
 	BOOL _activeState;
 }
