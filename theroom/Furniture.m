@@ -10,6 +10,7 @@
 #import "NotificationConstants.h"
 #import "UtilityFunctions.h"
 #import "SimpleAudioEngine.h"
+#import "ItemSelector.h"
 
 @implementation Furniture
 
@@ -39,7 +40,11 @@
 		_closestWaypointName = [[data objectForKey:@"ClosestWayPoint"] retain];
 		_positionInRoom = CGPointFromDictionary([data objectForKey:@"PositionInRoom"]);
 		self.position = _positionInRoom;
-		self.contentSize = _front.contentSize;
+//		self.contentSize = _front.contentSize;
+		
+		_itemSelector = [[ItemSelector alloc] initWithTag:[data objectForKey:@"Image"]];
+		_itemSelector.position = CGPointFromDictionary([data objectForKey:@"MenuPosition"]);
+		[self addChild:_itemSelector];
 		
 		if ([data objectForKey:@"Sound"] != nil)
 		{
@@ -51,7 +56,9 @@
 		
 		// Register for mouse events
 		CCDirector *director = [CCDirector sharedDirector];
-		[[director eventDispatcher] addMouseDelegate:self priority:0];
+		[[director eventDispatcher] addMouseDelegate:self priority:1];
+		
+//		self.anchorPoint = ccp(0.5f, 0.5f);
 	}
 	
 	return self;
@@ -78,7 +85,7 @@
 - (BOOL)ccMouseUp:(NSEvent *)event
 {
 	CGPoint locationInWindow = ccp(event.locationInWindow.x, event.locationInWindow.y);
-	CGPoint eventLocation = ccpSub(locationInWindow, _positionInRoom);
+	CGPoint eventLocation = [self convertToNodeSpace:locationInWindow];
 	CGPoint halfSize = ccpMult( ccp(_front.contentSize.width, _front.contentSize.height), 0.5f);
 
 	if (ABS(eventLocation.x) <= halfSize.x && ABS(eventLocation.y) <= halfSize.y)
@@ -89,6 +96,7 @@
 		}
 		else
 		{
+			
 			[[NSNotificationCenter defaultCenter] postNotificationName:kFurnitureActive object:self];
 		}
 		NSLog(@"Mouse Up Inside Furniture, swallowing event");
@@ -103,6 +111,7 @@
 	[[[CCDirector sharedDirector] eventDispatcher] removeMouseDelegate:self];
 	[_name release];
 	[_closestWaypointName release];
+	[_itemSelector release];
 	
 	[super dealloc];
 }

@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 
 @class CDSoundSource;
+@class ItemSelector;
 @interface Furniture : CCNode <CCMouseEventDelegate>
 {
 	CCSprite *_front;
@@ -18,6 +19,7 @@
 	NSString *_closestWaypointName;
 	CGPoint _positionInRoom;
 	CDSoundSource *_sound;
+	ItemSelector *_itemSelector;
 	
 	BOOL _activeState;
 }

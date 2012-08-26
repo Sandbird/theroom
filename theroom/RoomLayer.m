@@ -68,15 +68,15 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 		_fridge = [Furniture furnitureWithData:[gameData objectForKey:@"Fridge"]];
 		[self addChild:_fridge];
 		
+		_phone = [Furniture furnitureWithData:[gameData objectForKey:@"Phone"]];
+		[self addChild:_phone];
+		
 		// Setup the Character Johnny
 		_johnny = [[Character alloc] init];
 		
 		Waypoint *entrancePoint = [[Pathfinder sharedPathfinder] waypoint:@"Entrance"];
 		_johnny.position = entrancePoint.location;
 		[self addChild:_johnny];
-		
-		_phone = [Furniture furnitureWithData:[gameData objectForKey:@"Phone"]];
-		[self addChild:_phone];
 		
 		self.isMouseEnabled = YES;
 		
