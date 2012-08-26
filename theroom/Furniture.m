@@ -7,6 +7,7 @@
 //
 
 #import "Furniture.h"
+#import "NotificationConstants.h"
 #import "UtilityFunctions.h"
 
 @implementation Furniture
@@ -73,11 +74,11 @@
 	{
 		if (_activeState == YES)
 		{
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"kFurnitureNotActive" object:self];
+			[[NSNotificationCenter defaultCenter] postNotificationName:kFurnitureNotActive object:self];
 		}
 		else
 		{
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"kFurnitureActive" object:self];
+			[[NSNotificationCenter defaultCenter] postNotificationName:kFurnitureActive object:self];
 		}
 		NSLog(@"Mouse Up Inside Furniture, swallowing event");
 		return YES;

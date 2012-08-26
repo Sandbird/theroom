@@ -16,6 +16,7 @@
 
 @interface RoomLayer : CCLayer
 {
+	// Elements Of The Game World
 	CCSprite *_background;
 	Furniture *_bed;
 	Furniture *_tv;
@@ -24,7 +25,12 @@
 	Furniture *_phone;
 	Character *_johnny;
 	
+	// State Variables For Input
+	Furniture *_targetFurniture;
+	NSString *_targetWaypoint;
 	BOOL _isInteractive;
+	
+	// Game Loop State Machine
 	FiniteStateMachine *_room;
 }
 
