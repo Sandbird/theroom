@@ -13,6 +13,7 @@
 {
 	CCSprite *_appearanceFront;
 	CCSprite *_appearanceBack;
+	NSString *_wayPointName;
 }
 
 @property (nonatomic, readwrite, retain) NSString *waypointName;

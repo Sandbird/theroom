@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface Waypoint : NSObject
+{
+	CGPoint _location;
+	NSString *_name;
+	NSDictionary *_paths;
+}
 
 @property (nonatomic, readonly) CGPoint location;
 @property (nonatomic, readonly) NSString *name;

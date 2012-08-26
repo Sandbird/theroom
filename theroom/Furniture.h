@@ -12,6 +12,8 @@
 @interface Furniture : CCNode <CCMouseEventDelegate>
 {
 	CCSprite *_front;
+	NSString *_name;
+	CGPoint _positionInRoom;
 }
 
 @property (nonatomic, readonly) NSString *name;

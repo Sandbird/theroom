@@ -25,6 +25,8 @@
 		3132B43215E9952F0097ED8A /* couchFront.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B43015E9952F0097ED8A /* couchFront.png */; };
 		3132B43715E997C90097ED8A /* FiniteState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3132B43415E997C90097ED8A /* FiniteState.m */; };
 		3132B43815E997C90097ED8A /* FiniteStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3132B43615E997C90097ED8A /* FiniteStateMachine.m */; };
+		3132B43F15E9B1510097ED8A /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B43D15E9B1510097ED8A /* phone.png */; };
+		3132B44015E9B1510097ED8A /* phoneActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 3132B43E15E9B1510097ED8A /* phoneActive.png */; };
 		31EE31B515E8EC0B00DAF6B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B415E8EC0B00DAF6B9 /* QuartzCore.framework */; };
 		31EE31B715E8EC0B00DAF6B9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B615E8EC0B00DAF6B9 /* OpenGL.framework */; };
 		31EE31B915E8EC0B00DAF6B9 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EE31B815E8EC0B00DAF6B9 /* OpenAL.framework */; };
@@ -142,7 +144,6 @@
 		31EE333415E8EC0E00DAF6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EE333315E8EC0E00DAF6B9 /* AppDelegate.m */; };
 		31EE333F15E8ED2100DAF6B9 /* StartMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EE333E15E8ED2100DAF6B9 /* StartMenu.m */; };
 		31EE334215E8F8E500DAF6B9 /* RoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EE334115E8F8E500DAF6B9 /* RoomLayer.m */; };
-		31EE335115E8FB1600DAF6B9 /* position.txt in Resources */ = {isa = PBXBuildFile; fileRef = 31EE334A15E8FB1600DAF6B9 /* position.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +172,8 @@
 		3132B43415E997C90097ED8A /* FiniteState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiniteState.m; sourceTree = "<group>"; };
 		3132B43515E997C90097ED8A /* FiniteStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiniteStateMachine.h; sourceTree = "<group>"; };
 		3132B43615E997C90097ED8A /* FiniteStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiniteStateMachine.m; sourceTree = "<group>"; };
+		3132B43D15E9B1510097ED8A /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phone.png; path = Resources/phone.png; sourceTree = "<group>"; };
+		3132B43E15E9B1510097ED8A /* phoneActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phoneActive.png; path = Resources/phoneActive.png; sourceTree = "<group>"; };
 		31EE31B015E8EC0B00DAF6B9 /* theroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31EE31B415E8EC0B00DAF6B9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		31EE31B615E8EC0B00DAF6B9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -426,7 +429,6 @@
 		31EE333E15E8ED2100DAF6B9 /* StartMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartMenu.m; sourceTree = "<group>"; };
 		31EE334015E8F8E500DAF6B9 /* RoomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLayer.h; sourceTree = "<group>"; };
 		31EE334115E8F8E500DAF6B9 /* RoomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomLayer.m; sourceTree = "<group>"; };
-		31EE334A15E8FB1600DAF6B9 /* position.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = position.txt; path = Resources/position.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -884,7 +886,8 @@
 				3132B41E15E981710097ED8A /* JohnnyBack.png */,
 				3132B41F15E981710097ED8A /* JohnnyFront.png */,
 				31EE333015E8EC0E00DAF6B9 /* main.m */,
-				31EE334A15E8FB1600DAF6B9 /* position.txt */,
+				3132B43D15E9B1510097ED8A /* phone.png */,
+				3132B43E15E9B1510097ED8A /* phoneActive.png */,
 				31EE332F15E8EC0E00DAF6B9 /* Prefix.pch */,
 				3118D9FE15E93EA400D4518B /* theroom.png */,
 				3132B42715E985030097ED8A /* tv.png */,
@@ -949,7 +952,6 @@
 				31EE31CA15E8EC0B00DAF6B9 /* fps_images.png in Resources */,
 				31EE31CC15E8EC0B00DAF6B9 /* icon.icns in Resources */,
 				31EE331215E8EC0E00DAF6B9 /* ChangeLog in Resources */,
-				31EE335115E8FB1600DAF6B9 /* position.txt in Resources */,
 				3118D9E115E90E6000D4518B /* gameData.plist in Resources */,
 				3118D9EC15E91AD900D4518B /* floorPlan.plist in Resources */,
 				3118D9FF15E93EA400D4518B /* theroom.png in Resources */,
@@ -962,6 +964,8 @@
 				3132B42E15E993580097ED8A /* fridgeActive.png in Resources */,
 				3132B43115E9952F0097ED8A /* couchBack.png in Resources */,
 				3132B43215E9952F0097ED8A /* couchFront.png in Resources */,
+				3132B43F15E9B1510097ED8A /* phone.png in Resources */,
+				3132B44015E9B1510097ED8A /* phoneActive.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

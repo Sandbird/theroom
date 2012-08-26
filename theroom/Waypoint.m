@@ -12,6 +12,10 @@
 
 @implementation Waypoint
 
+@synthesize name = _name;
+@synthesize location = _location;
+@synthesize paths = _paths;
+
 + (id)waypointWithWaypointData:(NSDictionary *)waypointData
 {
 	return [[[Waypoint alloc] initWithWaypointData:waypointData] autorelease];
@@ -22,9 +26,9 @@
 	self = [super init];
 	if (self !=nil)
 	{
-		_name = [waypointData[@"Name"] retain];
-		_location = CGPointFromDictionary(waypointData[@"Position"]);
-		_paths = [waypointData[@"Paths"] retain];
+		_name = [[waypointData objectForKey:@"Name"] retain];
+		_location = CGPointFromDictionary([waypointData objectForKey:@"Position"]);
+		_paths = [[waypointData objectForKey:@"Paths"] retain];
 	}
 	
 	return self;

@@ -43,7 +43,7 @@
 		NSBundle *mainBundle = [NSBundle mainBundle];
 		NSString *path = [mainBundle pathForResource:@"theroom" ofType:@"png"];
 		_background = [CCSprite spriteWithFile:path];
-		NSSize winSize = [[CCDirector sharedDirector] winSize];
+		CGSize winSize = [[CCDirector sharedDirector] winSize];
 		_background.position = ccp( winSize.width / 2, winSize.height / 2);
 		[self addChild:_background];
 		
@@ -52,16 +52,16 @@
 		NSDictionary *gameData = [NSDictionary dictionaryWithContentsOfFile:pathToGameData];
 		
 		// Setup the Furniture
-		_bed = [Furniture furnitureWithData:gameData[@"Bed"]];
+		_bed = [Furniture furnitureWithData:[gameData objectForKey:@"Bed"]];
 		[self addChild:_bed];
 		
-		_tv = [Furniture furnitureWithData:gameData[@"TV"]];
+		_tv = [Furniture furnitureWithData:[gameData objectForKey:@"TV"]];
 		[self addChild:_tv];
 		
-		_fridge = [Furniture furnitureWithData:gameData[@"Fridge"]];
+		_fridge = [Furniture furnitureWithData:[gameData objectForKey:@"Fridge"]];
 		[self addChild:_fridge];
 		
-		_couch = [Furniture furnitureWithData:gameData[@"Couch"]];
+		_couch = [Furniture furnitureWithData:[gameData objectForKey:@"Couch"]];
 		[self addChild:_couch];
 		
 				// Setup the Character Johnny
@@ -70,6 +70,9 @@
 		Waypoint *entrancePoint = [[Pathfinder sharedPathfinder] waypoint:@"Entrance"];
 		_johnny.position = entrancePoint.location;
 		[self addChild:_johnny];
+		
+		_phone = [Furniture furnitureWithData:[gameData objectForKey:@"Phone"]];
+		[self addChild:_phone];
 		
 		self.isMouseEnabled = YES;
 		
@@ -91,7 +94,7 @@
 {
 	NSLog(@"RoomLayer mouse up");
 	// Take the event and send johnny to the location
-	CGPoint mouseLocation = event.locationInWindow;
+	CGPoint mouseLocation = ccp(event.locationInWindow.x, event.locationInWindow.y);
 	NSString *mouseWaypointName = [[Pathfinder sharedPathfinder] closestLocationTo:mouseLocation];
 	
 	if (_johnny.waypointName != mouseWaypointName)

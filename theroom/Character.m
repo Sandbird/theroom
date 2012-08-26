@@ -10,6 +10,8 @@
 
 @implementation Character
 
+@synthesize waypointName = _wayPointName;
+
 - (id)init
 {
 	self = [super init];
@@ -17,15 +19,16 @@
 	{
 		NSString *pathToAppearanceFront = [[NSBundle mainBundle] pathForResource:@"JohnnyFront" ofType:@"png"];
 		_appearanceFront = [CCSprite spriteWithFile:pathToAppearanceFront];
+		_appearanceFront.position = ccp( 0, _appearanceFront.contentSize.height / 2);
 		[self addChild:_appearanceFront];
 		
 		NSString *pathToAppearanceBack = [[NSBundle mainBundle] pathForResource:@"JohnnyBack" ofType:@"png"];
 		_appearanceBack = [CCSprite spriteWithFile:pathToAppearanceBack];
+		_appearanceBack.position = ccp( 0, _appearanceBack.contentSize.height / 2);
 		[self addChild:_appearanceBack];
 		_appearanceBack.visible = NO;
 		
-		
-		_waypointName = @"Entrance";
+		_wayPointName = @"Entrance";
 	}
 	
 	return self;

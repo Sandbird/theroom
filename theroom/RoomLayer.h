@@ -21,6 +21,7 @@
 	Furniture *_tv;
 	Furniture *_fridge;
 	Furniture *_couch;
+	Furniture *_phone;
 	Character *_johnny;
 	
 	FiniteStateMachine *_room;

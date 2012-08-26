@@ -41,7 +41,7 @@ static Pathfinder *sharedPathfinder = nil;
 		[waypoints enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
 		 {
 			 Waypoint *waypoint = [Waypoint waypointWithWaypointData:obj];
-			 _waypoints[key] = waypoint;
+			 [_waypoints setObject:waypoint forKey:key];
 		 }];
 	}
 	
@@ -50,7 +50,7 @@ static Pathfinder *sharedPathfinder = nil;
 
 - (Waypoint *)waypoint:(NSString *)waypointName
 {
-	return _waypoints[waypointName];
+	return [_waypoints objectForKey:waypointName];
 }
 
 - (NSString *)closestLocationTo:(CGPoint)point
@@ -80,14 +80,14 @@ static Pathfinder *sharedPathfinder = nil;
 
 - (NSArray*)findPathBetween:(NSString *)location andDestination:(NSString *)destination
 {
-	Waypoint *locationWaypoint = _waypoints[location];
-	NSArray *waypointPath = locationWaypoint.paths[destination];
+	Waypoint *locationWaypoint = [_waypoints objectForKey:location];
+	NSArray *waypointPath = [locationWaypoint.paths objectForKey:destination];
 	if (waypointPath != nil)
 	{
 		NSMutableArray *waypoints = [NSMutableArray arrayWithCapacity:[waypointPath count]];
 		for (NSString *nextDestination in waypointPath)
 		{
-			[waypoints addObject:_waypoints[nextDestination]];
+			[waypoints addObject:[_waypoints objectForKey:nextDestination]];
 		}
 		
 		return waypoints;

@@ -11,6 +11,9 @@
 
 @implementation Furniture
 
+@synthesize name = _name;
+@synthesize positionInRoom = _positionInRoom;
+
 + (id)furnitureWithData:(NSDictionary *)data
 {
 	return [[[Furniture alloc] initWithData:data] autorelease];
@@ -21,11 +24,11 @@
 	self = [super init];
 	if (self != nil)
 	{
-		NSString *pathToImage = [[NSBundle mainBundle] pathForResource:data[@"Image"] ofType:@"png"];
+		NSString *pathToImage = [[NSBundle mainBundle] pathForResource:[data objectForKey:@"Image"] ofType:@"png"];
 		_front = [CCSprite spriteWithFile:pathToImage];
 		[self addChild:_front];
-		_name = [data[@"Name"] retain];
-		_positionInRoom = CGPointFromDictionary(data[@"PositionInRoom"]);
+		_name = [[data objectForKey:@"Name"] retain];
+		_positionInRoom = CGPointFromDictionary([data objectForKey:@"PositionInRoom"]);
 		self.position = _positionInRoom;
 		self.contentSize = _front.contentSize;
 		
@@ -41,7 +44,8 @@
 
 - (BOOL)ccMouseUp:(NSEvent *)event
 {
-	CGPoint eventLocation = ccpSub(event.locationInWindow,_positionInRoom);
+	CGPoint locationInWindow = ccp(event.locationInWindow.x, event.locationInWindow.y);
+	CGPoint eventLocation = ccpSub(locationInWindow, _positionInRoom);
 	CGPoint halfSize = ccpMult( ccp(_front.contentSize.width, _front.contentSize.height), 0.5f);
 
 	if (ABS(eventLocation.x) <= halfSize.x && ABS(eventLocation.y) <= halfSize.y)

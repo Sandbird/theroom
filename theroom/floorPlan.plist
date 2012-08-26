@@ -17,12 +17,19 @@
 		<dict>
 			<key>Bed</key>
 			<array>
-				<string>RoomCentre</string>
 				<string>Bed</string>
 			</array>
 			<key>RoomCentre</key>
 			<array>
 				<string>RoomCentre</string>
+			</array>
+			<key>Fridge</key>
+			<array>
+				<string>Fridge</string>
+			</array>
+			<key>TV</key>
+			<array>
+				<string>TV</string>
 			</array>
 		</dict>
 	</dict>
@@ -33,7 +40,7 @@
 		<key>Position</key>
 		<dict>
 			<key>X</key>
-			<integer>480</integer>
+			<integer>490</integer>
 			<key>Y</key>
 			<integer>120</integer>
 		</dict>
@@ -42,6 +49,18 @@
 			<key>Entrance</key>
 			<array>
 				<string>Entrance</string>
+			</array>
+			<key>Bed</key>
+			<array>
+				<string>Bed</string>
+			</array>
+			<key>Fridge</key>
+			<array>
+				<string>Fridge</string>
+			</array>
+			<key>TV</key>
+			<array>
+				<string>TV</string>
 			</array>
 		</dict>
 	</dict>
@@ -52,9 +71,9 @@
 		<key>Position</key>
 		<dict>
 			<key>X</key>
-			<integer>240</integer>
+			<integer>308</integer>
 			<key>Y</key>
-			<integer>200</integer>
+			<integer>142</integer>
 		</dict>
 		<key>Paths</key>
 		<dict>
@@ -66,6 +85,78 @@
 			<key>RoomCentre</key>
 			<array>
 				<string>RoomCentre</string>
+			</array>
+			<key>Fridge</key>
+			<array>
+				<string>RoomCentre</string>
+				<string>Fridge</string>
+			</array>
+			<key>TV</key>
+			<array>
+				<string>TV</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Fridge</key>
+	<dict>
+		<key>Name</key>
+		<string>Fridge</string>
+		<key>Position</key>
+		<dict>
+			<key>X</key>
+			<integer>710</integer>
+			<key>Y</key>
+			<integer>95</integer>
+		</dict>
+		<key>Paths</key>
+		<dict>
+			<key>Entrance</key>
+			<array>
+				<string>Entrance</string>
+			</array>
+			<key>RoomCentre</key>
+			<array>
+				<string>RoomCentre</string>
+			</array>
+			<key>Bed</key>
+			<array>
+				<string>RoomCentre</string>
+				<string>Bed</string>
+			</array>
+			<key>TV</key>
+			<array>
+				<string>TV</string>
+			</array>
+		</dict>
+	</dict>
+	<key>TV</key>
+	<dict>
+		<key>Name</key>
+		<string>Bed</string>
+		<key>Position</key>
+		<dict>
+			<key>X</key>
+			<integer>490</integer>
+			<key>Y</key>
+			<integer>190</integer>
+		</dict>
+		<key>Paths</key>
+		<dict>
+			<key>Entrance</key>
+			<array>
+				<string>Entrance</string>
+			</array>
+			<key>RoomCentre</key>
+			<array>
+				<string>RoomCentre</string>
+			</array>
+			<key>Fridge</key>
+			<array>
+				<string>Fridge</string>
+			</array>
+			<key>Bed</key>
+			<array>
+				<string>Bed</string>
 			</array>
 		</dict>
 	</dict>
