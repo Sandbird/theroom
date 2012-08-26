@@ -12,6 +12,7 @@
 @interface Furniture : CCNode <CCMouseEventDelegate>
 {
 	CCSprite *_front;
+	CCSprite *_active;
 	NSString *_name;
 	CGPoint _positionInRoom;
 }
@@ -22,5 +23,7 @@
 + (id)furnitureWithData:(NSDictionary *)data;
 
 - (id)initWithData:(NSDictionary *)data;
+- (void)showInactive;
+- (void)showActive;
 
 @end

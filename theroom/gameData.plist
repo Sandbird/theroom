@@ -22,6 +22,8 @@
 	<dict>
 		<key>Image</key>
 		<string>tv</string>
+		<key>ActiveImage</key>
+		<string>tvActive</string>
 		<key>Name</key>
 		<string>Bed</string>
 		<key>ClosestWayPoint</key>
