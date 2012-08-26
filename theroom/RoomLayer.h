@@ -13,7 +13,7 @@
 @class Character;
 @class FiniteStateMachine;
 @class Furniture;
-
+@class CDSoundSource;
 @interface RoomLayer : CCLayer
 {
 	// Elements Of The Game World
@@ -24,6 +24,8 @@
 	Furniture *_couch;
 	Furniture *_phone;
 	Character *_johnny;
+	
+	CDSoundSource *backgroundNoise;
 	
 	// State Variables For Input
 	Furniture *_targetFurniture;

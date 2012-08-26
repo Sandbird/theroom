@@ -8,6 +8,7 @@
 
 #import "StartMenu.h"
 #import "RoomLayer.h"
+#import "SimpleAudioEngine.h"
 
 
 // Import the interfaces
@@ -39,10 +40,11 @@
 	if( (self=[super init]) )
 	{
 		// create and initialize The game starting labels
-		CCLabelTTF *playLabel = [CCLabelTTF labelWithString:@"Play Game" fontName:@"Arial" fontSize:32];
+		CCLabelTTF *playLabel = [CCLabelTTF labelWithString:@"Enter" fontName:@"Arial" fontSize:32];
 		CCMenuItem *playMenuItem = [CCMenuItemLabel itemWithLabel:playLabel block:^(id sender)
 									{
 										[[CCDirector sharedDirector] pushScene:[RoomLayer scene]];
+										[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 									}];
 		
 		CCLabelTTF *quitLabel = [CCLabelTTF labelWithString:@"Quit" fontName:@"Arial" fontSize:32];
@@ -57,6 +59,16 @@
 		CGSize size = [[CCDirector sharedDirector] winSize];
 		menu.position = ccp( size.width / 2, size.height / 2);
 		[self addChild:menu];
+		
+		CCLabelTTF *noteLabel = [CCLabelTTF labelWithString:@"(You'll need a headset!)" fontName:@"Arial" fontSize:16];
+		noteLabel.position = ccp (size.width / 2, (size.height / 2) - 24);
+		[self addChild:noteLabel];
+		
+		CCLabelTTF *titleLabel = [CCLabelTTF labelWithString:@"THE ROOM" fontName:@"Arial" fontSize:74];
+		titleLabel.position = ccp (size.width / 2, size.height - (size.height / 4));
+		[self addChild:titleLabel];
+		
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"home again.mp3"];
 	}
 	return self;
 }
