@@ -27,6 +27,9 @@
 	
 	CDSoundSource *backgroundNoise;
 	
+	// State Variables For Input
+	Furniture *_targetFurniture;
+	NSString *_targetWaypoint;
 	BOOL _isInteractive;
 	
 	// Game Loop State Machine

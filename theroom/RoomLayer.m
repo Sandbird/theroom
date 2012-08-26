@@ -99,6 +99,8 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 {
 	[super onEnter];
 	[_room start];
+	
+	[SimpleAudioEngine sharedEngine].backgroundMusicVolume = 0.3f;
 	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"riders of chord.mp3" loop:YES];
 }
 

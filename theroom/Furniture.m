@@ -41,8 +41,11 @@
 		self.position = _positionInRoom;
 		self.contentSize = _front.contentSize;
 		
-		_sound = [[SimpleAudioEngine sharedEngine] soundSourceForFile:[data objectForKey:@"Sound"]];
-		_sound.looping = YES;
+		if ([data objectForKey:@"Sound"] != nil)
+		{
+			_sound = [[[SimpleAudioEngine sharedEngine] soundSourceForFile:[data objectForKey:@"Sound"]] retain];
+			_sound.looping = YES;
+		}
 		
 		[self showInactive];
 		
