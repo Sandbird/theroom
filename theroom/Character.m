@@ -11,6 +11,8 @@
 #import "Furniture.h"
 #import "FiniteState.h"
 #import "FiniteStateMachine.h"
+#import "Pathfinder.h"
+#import "Waypoint.h"
 
 @implementation Character
 
@@ -18,7 +20,7 @@ static NSString *kCharacterIdleState = @"characterIdleState";
 static NSString *kCharacterMovementState = @"characterMovementState";
 static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithFurnitureState";
 
-@synthesize waypointName = _wayPointName;
+@synthesize currentWaypointName = _currentWaypointName;
 @synthesize finishedActions = _finishedActions;
 
 - (id)init
@@ -37,7 +39,7 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 		[self addChild:_appearanceBack];
 		_appearanceBack.visible = NO;
 		
-		_wayPointName = @"Entrance";
+		_currentWaypointName = @"Entrance";
 		_finishedActions = NO;
 		_targetFurniture = nil;
 		
@@ -73,9 +75,12 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 	}
 }
 
-- (void)moveFrom:(NSString *)locationName to:(NSString *)destinationName
+- (void)moveToWaypointWithName:(NSString *)waypointName
 {
-	
+	if (_wayPointDestinationName == nil && [waypointName isEqualToString:_currentWaypointName] == NO)
+	{
+		_wayPointDestinationName = [waypointName retain];
+	}
 }
 
 #pragma mark - Private
@@ -93,14 +98,19 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 	 {
 		 if (SELF->_targetFurniture != nil)
 		 {
-//			 if([SELF->_targetFurniture.closestWaypointName isEqualToString:SELF->_wayPointName] == YES)
-//			 {
+			 if([SELF->_targetFurniture.closestWaypointName isEqualToString:SELF->_currentWaypointName] == YES)
+			 {
 				 return kCharacterInteractWithFurnitureState;
-//			 }
-//			 else
-//			 {
-//				 return kCharacterMovementState;
-//			 }
+			 }
+			 else
+			 {
+				 return kCharacterMovementState;
+			 }
+		 }
+		 
+		 if (SELF->_wayPointDestinationName != nil)
+		 {
+			 return kCharacterMovementState;
 		 }
 		 
 		 return nil;
@@ -118,11 +128,47 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 	};
 	
 	// Movement State
+	FiniteState *movementState = [FiniteState stateWithName:kCharacterMovementState];
+	movementState.stateEnter = ^(void)
+	{
+		// Figure out path and create actions
+		NSArray *waypointsToDestination = [[Pathfinder sharedPathfinder] findPathBetween:SELF->_currentWaypointName andDestination:_wayPointDestinationName];
+		NSMutableArray *allActionsToDestination = [NSMutableArray arrayWithCapacity:[waypointsToDestination count]];
+			
+		for (Waypoint *waypoint in waypointsToDestination)
+		{
+			CCAction *moveAction = [CCMoveTo actionWithDuration:2.0f position:waypoint.location];
+			[allActionsToDestination addObject:moveAction];
+		}
+		[allActionsToDestination addObject:[CCCallBlock actionWithBlock:^{
+			SELF->_finishedActions = YES;
+		}]];
+		id waypointSequence = [CCSequence actionWithArray:allActionsToDestination];
+		
+		
+		[SELF runAction:waypointSequence];
+	};
+	movementState.stateLeave = ^(void)
+	{
+		_currentWaypointName = [_wayPointDestinationName retain];
+		
+		[_wayPointDestinationName release];
+		_wayPointDestinationName = nil;
+	};
+	[movementState addEdge:^NSString *(ccTime delta)
+	 {
+		if (SELF->_finishedActions == YES)
+		{
+			return kCharacterIdleState;
+		}
+		
+		return nil;
+	}];
 	
 	
 	// The actual state machine
 	_behaviour = [[FiniteStateMachine alloc] initWithInitialState:idleState];
-	[_behaviour addStates:interactWithFurnitureState, nil];
+	[_behaviour addStates:interactWithFurnitureState, movementState, nil];
 }
 
 #pragma mark -

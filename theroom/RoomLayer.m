@@ -24,6 +24,7 @@ static NSString *kRoomEnteringRoomState = @"enteringRoomState";
 static NSString *kRoomIdleState = @"idleState";
 static NSString *kRoomGoingToSleepState = @"goingToSleepState";
 static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState";
+static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 
 +(CCScene *) scene
 {
@@ -110,28 +111,12 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 
 - (BOOL)ccMouseUp:(NSEvent *)event
 {
-	if (_isInteractive == YES)
+	if (_isInteractive == YES && _targetWaypoint == nil)
 	{
 		NSLog(@"RoomLayer mouse up");
 		// Take the event and send johnny to the location
 		CGPoint mouseLocation = ccp(event.locationInWindow.x, event.locationInWindow.y);
-		NSString *mouseWaypointName = [[Pathfinder sharedPathfinder] closestLocationTo:mouseLocation];
-		
-		if (_johnny.waypointName != mouseWaypointName)
-		{
-			NSArray *waypointsToDestination = [[Pathfinder sharedPathfinder] findPathBetween:_johnny.waypointName andDestination:mouseWaypointName];
-			NSMutableArray *allActionsToDestination = [NSMutableArray arrayWithCapacity:[waypointsToDestination count]];
-			
-			for (Waypoint *waypoint in waypointsToDestination)
-			{
-				CCAction *moveAction = [CCMoveTo actionWithDuration:2.0f position:waypoint.location];
-				[allActionsToDestination addObject:moveAction];
-			}
-			id waypointSequence = [CCSequence actionWithArray:allActionsToDestination];
-			
-			
-			[_johnny runAction:waypointSequence];
-		}		
+		_targetWaypoint = [[[Pathfinder sharedPathfinder] closestLocationTo:mouseLocation] retain];
 	}
 	
 	return YES;
@@ -147,7 +132,7 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 	enteringRoom.stateEnter = ^(void)
 	{
 		SELF->_isInteractive = NO;
-		[SELF->_johnny moveFrom:@"Offscreen" to:@"Entrance"];
+		[SELF->_johnny moveToWaypointWithName:@"Entrance"];
 	};
 	enteringRoom.stateLeave = ^(void)
 	{
@@ -166,14 +151,38 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 	FiniteState *sleepState = [FiniteState stateWithName:kRoomGoingToSleepState];
 	
 	// Idle State
-	FiniteState *idle = [FiniteState stateWithName:kRoomIdleState];
-	[idle addEdge:^NSString *(ccTime delta)
+	FiniteState *idleState = [FiniteState stateWithName:kRoomIdleState];
+	[idleState addEdge:^NSString *(ccTime delta)
 	 {
 		 if (SELF->_targetFurniture != nil)
 		 {
 			 return kRoomInteractWithFurnitureState;
 		 }
+		 else if (SELF->_targetWaypoint != nil)
+		 {
+			 return kRoomMoveCharacterState;
+		 }
 		 
+		 return nil;
+	 }];
+	
+	// Move Character State
+	FiniteState *moveCharacterState = [FiniteState stateWithName:kRoomMoveCharacterState];
+	moveCharacterState.stateEnter = ^(void)
+	{
+		[SELF->_johnny moveToWaypointWithName:_targetWaypoint];
+	};
+	moveCharacterState.stateLeave = ^(void)
+	{
+		[SELF->_targetWaypoint release];
+		SELF->_targetWaypoint = nil;
+	};
+	[moveCharacterState addEdge:^NSString *(ccTime delta)
+	 {
+		 if (SELF->_johnny.finishedActions == YES)
+		 {
+			 return kRoomIdleState;
+		 }
 		 return nil;
 	 }];
 	
@@ -195,7 +204,7 @@ static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState"
 	}];
 	
 	_room = [[FiniteStateMachine alloc] initWithInitialState:enteringRoom];
-	[_room addStates:sleepState, idle, interactingWithFurnitureState, nil];
+	[_room addStates:sleepState, idleState, moveCharacterState, interactingWithFurnitureState, nil];
 }
 
 - (void)setupObservations
