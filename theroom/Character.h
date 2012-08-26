@@ -17,18 +17,20 @@
 {
 	CCSprite *_appearanceFront;
 	CCSprite *_appearanceBack;
-	NSString *_wayPointName;
+	NSString *_currentWaypointName;
 	
+	// State Machine Variables
 	BOOL _finishedActions;
 	Furniture *_targetFurniture;
+	NSString *_wayPointDestinationName;
 	FiniteStateMachine *_behaviour;
 }
 
-@property (nonatomic, readwrite, retain) NSString *waypointName;
+@property (nonatomic, readwrite, retain) NSString *currentWaypointName;
 @property (nonatomic, readonly) BOOL finishedActions;
 
 - (void)update:(ccTime)delta;
 - (void)moveTo:(Furniture *)target;
-- (void)moveFrom:(NSString *)locationName to:(NSString *)destinationName;
+- (void)moveToWaypointWithName:(NSString *)waypointName;
 
 @end
