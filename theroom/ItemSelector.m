@@ -158,6 +158,15 @@
 		NSLog(@"Mouse Up Inside Menu, swallowing event");
 		return YES;
 	}
+	else
+	{
+		self.visible = NO;
+		_clicked = NO;
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:kMenuItemCancelled object:nil];
+		
+		return YES;
+	}
 	
 	return NO;
 }

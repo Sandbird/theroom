@@ -10,3 +10,4 @@ NSString *kFurnitureNotActive = @"furnitureNotActive";
 NSString *kFurnitureActive = @"furnitureActive";
 
 NSString *kMenuItemSelected = @"menuItemSelected";
+NSString *kMenuItemCancelled = @"menuItemCancelled";

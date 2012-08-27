@@ -10,3 +10,4 @@ extern NSString *kFurnitureNotActive;
 extern NSString *kFurnitureActive;
 
 extern NSString *kMenuItemSelected;
+extern NSString *kMenuItemCancelled;

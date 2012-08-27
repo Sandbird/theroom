@@ -266,6 +266,15 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 			 _selectedItem = (ItemSelection *)[note.object retain];
 		 }
 	 }];
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:kMenuItemCancelled object:nil queue:nil usingBlock:^(NSNotification *note)
+	 {
+		 // INGIMAR: here you set the furniture to inactive state and set the state machine accordingly
+//		 if (_selectedItem == nil)
+//		 {
+//			 _selectedItem = (ItemSelection *)[note.object retain];
+//		 }
+	 }];
 }
 
 #pragma mark -
