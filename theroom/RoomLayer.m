@@ -15,6 +15,7 @@
 #import "ItemSelector.h"
 #import "NotificationConstants.h"
 #import "Pathfinder.h"
+#import "Psyche.h"
 #import "UtilityFunctions.h"
 #import "Waypoint.h"
 #import "SimpleAudioEngine.h"
@@ -283,7 +284,10 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 
 - (void)updatePsyche
 {
-	
+	if (_selectedItem != nil)
+	{
+		[_johnny.psyche updateWithSelection:_selectedItem];
+	}
 }
 
 #pragma mark -

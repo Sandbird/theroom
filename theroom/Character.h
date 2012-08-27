@@ -12,12 +12,15 @@
 // Forward Declarations
 @class FiniteStateMachine;
 @class Furniture;
+@class Psyche;
 
 @interface Character : CCNode
 {
 	CCSprite *_appearanceFront;
 	CCSprite *_appearanceBack;
 	NSString *_currentWaypointName;
+	
+	Psyche *_psyche;
 	
 	// State Machine Variables
 	BOOL _finishedMovement;
@@ -29,6 +32,7 @@
 
 @property (nonatomic, readwrite, retain) NSString *currentWaypointName;
 @property (nonatomic, readonly) BOOL finishedActions;
+@property (nonatomic, readonly) Psyche *psyche;
 
 - (void)update:(ccTime)delta;
 - (void)moveTo:(Furniture *)target;

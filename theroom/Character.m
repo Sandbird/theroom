@@ -12,6 +12,7 @@
 #import "FiniteState.h"
 #import "FiniteStateMachine.h"
 #import "Pathfinder.h"
+#import "Psyche.h"
 #import "Waypoint.h"
 
 @implementation Character
@@ -22,6 +23,7 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 
 @synthesize currentWaypointName = _currentWaypointName;
 @synthesize finishedActions = _finishedActions;
+@synthesize psyche = _psyche;
 
 - (id)init
 {
@@ -41,6 +43,9 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 		
 		_currentWaypointName = @"Outside";
 		self.position = [[Pathfinder sharedPathfinder] waypoint:_currentWaypointName].location;
+		
+		_psyche = [[Psyche alloc] init];
+		
 		_finishedMovement = NO;
 		_finishedActions = NO;
 		_targetFurniture = nil;
@@ -215,6 +220,7 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 
 - (void)dealloc
 {
+	[_psyche dealloc];
 	[_behaviour release];
 	
 	[super dealloc];
