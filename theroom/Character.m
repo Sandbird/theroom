@@ -84,6 +84,11 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 	}
 }
 
+- (void)itemSelected
+{
+	_finishedActions = YES;
+}
+
 #pragma mark - Private
 
 - (void)setupStateMachine
@@ -127,6 +132,20 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 		SELF->_appearanceBack.visible = NO;
 		SELF->_appearanceFront.visible = NO;
 	};
+	interactWithFurnitureState.stateLeave = ^(void)
+	{
+		SELF->_appearanceFront.visible = YES;
+		[SELF->_targetFurniture release];
+		SELF->_targetFurniture = nil;
+	};
+	[interactWithFurnitureState addEdge:^NSString *(ccTime delta) {
+		if (SELF->_finishedActions == YES)
+		{
+			return kCharacterIdleState;
+		}
+		
+		return nil;
+	}];
 	
 	// Movement State
 	FiniteState *movementState = [FiniteState stateWithName:kCharacterMovementState];
