@@ -153,6 +153,22 @@
 			_clicked = NO;
 			
 			[[NSNotificationCenter defaultCenter] postNotificationName:kMenuItemSelected object:[ItemSelection itemSelectionWithTag:_tag itemNumber:index]];
+			
+			for (NSUInteger i = 0; i < 3; ++i)
+			{
+				NSDictionary *itemStates = [_items objectAtIndex:i];
+				
+				CCSprite *normalSprite = [itemStates objectForKey:@"normal"];
+				CCSprite *hoverSprite = [itemStates objectForKey:@"hover"];
+				CCSprite *deactiveSprite = [itemStates objectForKey:@"deactive"];
+				
+				normalSprite.opacity = 0xFF;
+				normalSprite.visible = YES;
+				hoverSprite.opacity = 0xFF;
+				hoverSprite.visible = YES;
+				deactiveSprite.opacity = 0xFF;
+				deactiveSprite.visible = YES;
+			}
 		}]]];
 		
 		NSLog(@"Mouse Up Inside Menu, swallowing event");
@@ -208,8 +224,12 @@
 			CCSprite *hoverSprite = itemStates[@"hover"];
 			
 			normalSprite.visible = YES;
+			normalSprite.opacity = 0xFF;
 			hoverSprite.visible = NO;
+			hoverSprite.opacity = 0xFF;
 		}
+		
+		return YES;
 	}
 	
 	return NO;
