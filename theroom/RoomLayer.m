@@ -160,6 +160,10 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	
 	// Idle State
 	FiniteState *idleState = [FiniteState stateWithName:kRoomIdleState];
+	idleState.stateEnter = ^(void)
+	{
+		SELF->_isInteractive = YES;
+	};
 	[idleState addEdge:^NSString *(ccTime delta)
 	 {
 		 if (SELF->_targetFurniture != nil)
@@ -243,7 +247,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	 {
 		 if (_targetFurniture == nil)
 		 {
-			 _targetFurniture = (Furniture *) note.object;
+			 _targetFurniture = (Furniture *) [note.object retain];
 		 }
 		 else
 		 {
