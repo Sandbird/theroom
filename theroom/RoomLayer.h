@@ -33,6 +33,7 @@
 	Furniture *_targetFurniture;
 	NSString *_targetWaypoint;
 	ItemSelection *_selectedItem;
+	BOOL _itemSelectionCancelled;
 	BOOL _isInteractive;
 	
 	// Game Loop State Machine
