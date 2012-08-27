@@ -63,7 +63,7 @@
 			sprite.position = ccp(i * ITEM_WIDTH, 0);
 			sprite.anchorPoint = CGPointZero;
 			[self addChild:sprite];
-			itemStates[@"normal"] = sprite;
+			[itemStates setObject:sprite forKey:@"normal"];
 			
 			pathToImage = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%luhover", tag, i] ofType:@"png"];
 			sprite = [CCSprite spriteWithFile:pathToImage];
@@ -71,7 +71,7 @@
 			sprite.anchorPoint = CGPointZero;
 			sprite.visible = NO;
 			[self addChild:sprite];
-			itemStates[@"hover"] = sprite;
+			[itemStates setObject:sprite forKey:@"hover"];
 			
 			pathToImage = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%ludeactive", tag, i] ofType:@"png"];
 			sprite = [CCSprite spriteWithFile:pathToImage];
@@ -79,7 +79,7 @@
 			sprite.anchorPoint = CGPointZero;
 			sprite.visible = NO;
 			[self addChild:sprite];
-			itemStates[@"deactive"] = sprite;
+			[itemStates setObject:sprite forKey:@"deactive"];
 			
 			[_items addObject:itemStates];
 		}
@@ -122,9 +122,9 @@
 		{
 			NSDictionary *itemStates = [_items objectAtIndex:i];
 			
-			CCSprite *normalSprite = itemStates[@"normal"];
-			CCSprite *hoverSprite = itemStates[@"hover"];
-			CCSprite *deactiveSprite = itemStates[@"deactive"];
+			CCSprite *normalSprite = [itemStates objectForKey:@"normal"];
+			CCSprite *hoverSprite = [itemStates objectForKey:@"hover"];
+			CCSprite *deactiveSprite = [itemStates objectForKey:@"deactive"];
 			
 			normalSprite.visible = (i == index);
 			hoverSprite.visible = NO;
@@ -139,8 +139,8 @@
 			{
 				NSDictionary *itemStates = [_items objectAtIndex:i];
 				
-				CCSprite *normalSprite = itemStates[@"normal"];
-				CCSprite *deactiveSprite = itemStates[@"deactive"];
+				CCSprite *normalSprite = [itemStates objectForKey:@"normal"];
+				CCSprite *deactiveSprite = [itemStates objectForKey:@"deactive"];
 				
 				[normalSprite runAction:[CCFadeOut actionWithDuration:0.5f]];
 				[deactiveSprite runAction:[CCFadeOut actionWithDuration:0.5f]];
@@ -205,8 +205,8 @@
 		{
 			NSDictionary *itemStates = [_items objectAtIndex:i];
 			
-			CCSprite *normalSprite = itemStates[@"normal"];
-			CCSprite *hoverSprite = itemStates[@"hover"];
+			CCSprite *normalSprite = [itemStates objectForKey:@"normal"];
+			CCSprite *hoverSprite = [itemStates objectForKey:@"hover"];
 			
 			normalSprite.visible = YES;
 			hoverSprite.visible = (i == index);			
@@ -220,8 +220,8 @@
 		{
 			NSDictionary *itemStates = [_items objectAtIndex:i];
 			
-			CCSprite *normalSprite = itemStates[@"normal"];
-			CCSprite *hoverSprite = itemStates[@"hover"];
+			CCSprite *normalSprite = [itemStates objectForKey:@"normal"];
+			CCSprite *hoverSprite = [itemStates objectForKey:@"hover"];
 			
 			normalSprite.visible = YES;
 			normalSprite.opacity = 0xFF;

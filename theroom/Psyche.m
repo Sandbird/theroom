@@ -10,6 +10,9 @@
 
 @implementation MentalFactor
 
+@synthesize name = _name;
+@synthesize score = _score;
+
 + (id)mentalFactorWithName:(NSString *)name initialScore:(NSInteger)score
 {
 	return [[[MentalFactor alloc] initWithName:name initialScore:score] autorelease];
