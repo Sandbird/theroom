@@ -155,6 +155,8 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	};
 	enteringRoom.stateLeave = ^(void)
 	{
+		[SELF cycleDay];
+		
 		SELF->_isInteractive = YES;
 	};
 	[enteringRoom addEdge:^NSString *(ccTime delta)
@@ -167,6 +169,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	 }];
 	
 	// Going To Sleep State
+	// INGIMAR: use the sleep state to show the day cycle WHILE johnny is sleeping and NOT after he wakes up
 	FiniteState *sleepState = [FiniteState stateWithName:kRoomGoingToSleepState];
 	
 	// Idle State
@@ -286,7 +289,6 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:kMenuItemCancelled object:nil queue:nil usingBlock:^(NSNotification *note)
 	 {
-		 // INGIMAR: here you set the furniture to inactive state and set the state machine accordingly
 		 _itemSelectionCancelled = YES;
 	 }];
 }
@@ -295,17 +297,31 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 {
 	if ([_selectedItem.selectedTag isEqualToString:@"bed"] == YES)
 	{
-		[self cycleDay];
+		[_johnny.psyche updateWithSelection:_selectedItem];
+		
+		if ([_selectedItem.selectedTag isEqualToString:@"bed"] == YES)
+		{
+			[self cycleDay];
+		}
 	}
 }
 
 - (void)cycleDay
 {
+	// INGIMAR: use this variable in the state machine to discard all input while the cycling is animated
+	_dayCycling = YES;
+	
+	_dayLabel.string = [NSString stringWithFormat:@"DAY %lu", _johnny.psyche.numberOfDays];
+	
 	_nightLayer.opacity = 0;
 	_dayLabel.opacity = 0;
 	
 	[_nightLayer runAction:[CCSequence actions:[CCFadeTo actionWithDuration:2.0f opacity:190], [CCDelayTime actionWithDuration:1.0f], [CCFadeTo actionWithDuration:2.0f opacity:0], nil]];
-	[_dayLabel runAction:[CCSequence actions:[CCFadeIn actionWithDuration:2.0f], [CCDelayTime actionWithDuration:1.0f], [CCFadeOut actionWithDuration:2.0f], nil]];
+	[_dayLabel runAction:[CCSequence actions:[CCFadeIn actionWithDuration:2.0f], [CCDelayTime actionWithDuration:1.0f], [CCFadeOut actionWithDuration:2.0f],
+						  [CCCallBlock actionWithBlock:^
+	{
+		_dayCycling = NO;
+	}], nil]];
 }
 
 #pragma mark -

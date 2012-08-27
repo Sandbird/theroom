@@ -38,6 +38,7 @@
 	
 	CCLayerColor *_nightLayer;
 	CCLabelTTF *_dayLabel;
+	BOOL _dayCycling;
 	
 	// Game Loop State Machine
 	FiniteStateMachine *_room;
