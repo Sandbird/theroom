@@ -36,6 +36,7 @@ typedef enum
 @interface Psyche : NSObject
 {
 	NSMutableDictionary *_mentalFactors;
+	NSMutableArray *_events;
 	NSUInteger _numberOfDays;
 	MentalState _mentalState;
 }
@@ -45,5 +46,6 @@ typedef enum
 
 - (BOOL)isMentallyStable;
 - (void)updateWithSelection:(ItemSelection *)selection;
+- (void)contemplateDayEvents;
 
 @end

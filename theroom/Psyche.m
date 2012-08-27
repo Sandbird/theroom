@@ -56,6 +56,7 @@ static NSInteger minContentScore = 12;
 			 MentalFactor *mentalFactor = [MentalFactor mentalFactorWithName:key initialScore:5];
 			 [_mentalFactors setObject:mentalFactor forKey:key];
 		 }];
+		_events = [[NSMutableArray alloc] initWithCapacity:[gameData count]];
         _numberOfDays = 1;
 		_mentalState = kMentalStateStable;
     }
@@ -64,18 +65,27 @@ static NSInteger minContentScore = 12;
 
 - (void)updateWithSelection:(ItemSelection *)selection
 {
-	++_numberOfDays;
+
 	
 	MentalFactor *mentalFactor = [_mentalFactors objectForKey:selection.itemName];
 	if (mentalFactor.desire == selection.itemNumber)
 	{
 		mentalFactor.score += 1;
+		NSLog(@"Correct choice %@ increased by one, now %ld", selection.itemName, mentalFactor.score);
 	}
 	else
 	{
 		mentalFactor.score -= 2;
+		NSLog(@"Wrong choice %@ decreased by two, now : %ld", selection.itemName, mentalFactor.score);
 	}
+	
+	[_events addObject:selection];
+}
 
+- (void)contemplateDayEvents
+{
+	++_numberOfDays;
+	
 	__block NSInteger overallScore = 0;
 	[_mentalFactors enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
 	 {
@@ -96,7 +106,27 @@ static NSInteger minContentScore = 12;
 		_mentalState = kMentalStateContent;
 	}
 	
-	NSLog(@"Psyche Update: Current State %d, Current Score : %ld", _mentalState, overallScore);
+	// If the user gets it right make the person content
+	__block BOOL everythingCorrect = YES;
+	[_events enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+	 {
+		 ItemSelection *event = (ItemSelection *)obj;
+		 MentalFactor *mentalFactor = [_mentalFactors objectForKey:event.itemName];
+		 if (event.itemNumber != mentalFactor.desire)
+		 {
+			 everythingCorrect = NO;
+			 *stop = YES;
+		 }
+	 }];
+	
+	if (everythingCorrect == YES)
+	{
+		_mentalState = kMentalStateContent;
+	}
+	
+	[_events removeAllObjects];
 }
+
+
 
 @end

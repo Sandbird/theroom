@@ -299,6 +299,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		
 	if ([_selectedItem.itemName isEqualToString:@"Bed"] == YES)
 	{
+		[_johnny.psyche contemplateDayEvents];
 		[self cycleDay];
 	}
 }
