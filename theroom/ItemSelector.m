@@ -90,6 +90,9 @@
 			_sound.looping = YES;
 		}
 */
+		
+		_clicked = NO;
+		
 		// Register for mouse events
 		CCDirector *director = [CCDirector sharedDirector];
 		[[director eventDispatcher] addMouseDelegate:self priority:0];
@@ -101,32 +104,97 @@
 	return self;
 }
 
-- (void)onEnter
-{
-	[super onEnter];
-	
-	
-}
-
 - (BOOL)ccMouseUp:(NSEvent *)event
 {
-    if (self.visible == NO)
+    if (self.visible == NO || _clicked == YES)
     {
         return NO;
     }
     
 	CGPoint locationInWindow = ccp(event.locationInWindow.x, event.locationInWindow.y);
 	CGPoint eventLocation = [self convertToNodeSpace:locationInWindow];
-	CGPoint finalPoint = eventLocation; // This seems to be offsetting it incorrectly? : ccpSub(eventLocation, ccp(MENU_WIDTH / 2, ITEM_HEIGHT / 2));
 	
-	if (finalPoint.y >= 0 && finalPoint.y <= ITEM_HEIGHT && finalPoint.x >= 0 && finalPoint.x <= MENU_WIDTH)
+	if (eventLocation.y >= 0 && eventLocation.y <= ITEM_HEIGHT && eventLocation.x >= 0 && eventLocation.x <= MENU_WIDTH)
 	{
-		// TODO: Marco Please finish this functionality :)
-		[[NSNotificationCenter defaultCenter] postNotificationName:kMenuItemSelected object:[ItemSelection itemSelectionWithTag:_tag itemNumber:0]];
-		self.visible = NO;
+		NSUInteger index = (NSUInteger)(eventLocation.x / ITEM_WIDTH);
+
+		for (NSUInteger i = 0; i < 3; ++i)
+		{
+			NSDictionary *itemStates = [_items objectAtIndex:i];
+			
+			CCSprite *normalSprite = itemStates[@"normal"];
+			CCSprite *hoverSprite = itemStates[@"hover"];
+			CCSprite *deactiveSprite = itemStates[@"deactive"];
+			
+			normalSprite.visible = (i == index);
+			hoverSprite.visible = NO;
+			deactiveSprite.visible = (i != index);
+		}
+		
+		_clicked = YES;
+		
+		[self runAction:[CCSequence actionOne:[CCDelayTime actionWithDuration:0.5f] two:[CCCallBlock actionWithBlock:^
+		{
+			for (NSUInteger i = 0; i < 3; ++i)
+			{
+				NSDictionary *itemStates = [_items objectAtIndex:i];
+				
+				CCSprite *normalSprite = itemStates[@"normal"];
+				CCSprite *deactiveSprite = itemStates[@"deactive"];
+				
+				[normalSprite runAction:[CCFadeOut actionWithDuration:0.5f]];
+				[deactiveSprite runAction:[CCFadeOut actionWithDuration:0.5f]];
+			}
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:kMenuItemSelected object:[ItemSelection itemSelectionWithTag:_tag itemNumber:index]];
+		}]]];
 		
 		NSLog(@"Mouse Up Inside Menu, swallowing event");
 		return YES;
+	}
+	
+	return NO;
+}
+
+- (BOOL)ccMouseMoved:(NSEvent *)event
+{
+    if (self.visible == NO || _clicked == YES)
+    {
+        return NO;
+    }
+    
+	CGPoint locationInWindow = ccp(event.locationInWindow.x, event.locationInWindow.y);
+	CGPoint eventLocation = [self convertToNodeSpace:locationInWindow];
+	
+	if (eventLocation.y >= 0 && eventLocation.y <= ITEM_HEIGHT && eventLocation.x >= 0 && eventLocation.x <= MENU_WIDTH)
+	{
+		NSUInteger index = (NSUInteger)(eventLocation.x / ITEM_WIDTH);
+
+		for (NSUInteger i = 0; i < 3; ++i)
+		{
+			NSDictionary *itemStates = [_items objectAtIndex:i];
+			
+			CCSprite *normalSprite = itemStates[@"normal"];
+			CCSprite *hoverSprite = itemStates[@"hover"];
+			
+			normalSprite.visible = YES;
+			hoverSprite.visible = (i == index);			
+		}
+		
+		return YES;
+	}
+	else
+	{
+		for (NSUInteger i = 0; i < 3; ++i)
+		{
+			NSDictionary *itemStates = [_items objectAtIndex:i];
+			
+			CCSprite *normalSprite = itemStates[@"normal"];
+			CCSprite *hoverSprite = itemStates[@"hover"];
+			
+			normalSprite.visible = YES;
+			hoverSprite.visible = NO;
+		}
 	}
 	
 	return NO;

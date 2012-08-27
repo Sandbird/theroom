@@ -26,6 +26,8 @@
 {
     NSMutableArray *_items;
 	NSString *_tag;
+	
+	BOOL _clicked;
 }
 
 - (id)initWithTag:(NSString *)tag;

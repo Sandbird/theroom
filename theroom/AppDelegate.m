@@ -31,7 +31,7 @@
 	[director setDisplayStats:NO];
 	
 	// Enable "moving" mouse event. Default no.
-	[window_ setAcceptsMouseMovedEvents:NO];
+	[window_ setAcceptsMouseMovedEvents:YES];
 	
 	// Center main window
 	[window_ center];
