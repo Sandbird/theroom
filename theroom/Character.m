@@ -84,6 +84,11 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 	}
 }
 
+- (void)itemSelected
+{
+	_finishedActions = YES;
+}
+
 #pragma mark - Private
 
 - (void)setupStateMachine

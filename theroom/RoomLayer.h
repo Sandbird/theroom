@@ -10,10 +10,13 @@
 #import "cocos2d.h"
 
 // Forward declarations
+@class CDSoundSource;
 @class Character;
 @class FiniteStateMachine;
 @class Furniture;
-@class CDSoundSource;
+@class ItemSelection;
+
+
 @interface RoomLayer : CCLayer
 {
 	// Elements Of The Game World
@@ -30,6 +33,7 @@
 	// State Variables For Input
 	Furniture *_targetFurniture;
 	NSString *_targetWaypoint;
+	ItemSelection *_selectedItem;
 	BOOL _isInteractive;
 	
 	// Game Loop State Machine

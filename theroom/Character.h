@@ -32,5 +32,6 @@
 - (void)update:(ccTime)delta;
 - (void)moveTo:(Furniture *)target;
 - (void)moveToWaypointWithName:(NSString *)waypointName;
+- (void)itemSelected;
 
 @end

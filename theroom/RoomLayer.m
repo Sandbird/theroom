@@ -12,6 +12,7 @@
 #import "FiniteState.h"
 #import "FiniteStateMachine.h"
 #import "Furniture.h"
+#import "ItemSelector.h"
 #import "NotificationConstants.h"
 #import "Pathfinder.h"
 #import "UtilityFunctions.h"
@@ -200,9 +201,26 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		[SELF->_johnny moveTo:_targetFurniture];
 		SELF->_isInteractive = NO;
 	};
+	interactingWithFurnitureState.stateUpdate = ^(ccTime delta)
+	{
+		if (SELF->_selectedItem != nil)
+		{
+			NSLog(@"Handle selection");
+			[SELF->_selectedItem release];
+			SELF->_selectedItem = nil;
+			
+			[SELF->_johnny itemSelected];
+		}
+	};
+	interactingWithFurnitureState.stateLeave = ^(void)
+	{
+		[SELF->_targetFurniture showInactive];
+		[SELF->_targetFurniture release];
+		SELF->_targetFurniture = nil;
+	};
 	[interactingWithFurnitureState addEdge:^NSString *(ccTime delta)
 	{
-		if (SELF->_johnny.finishedActions == YES)
+		if (SELF->_johnny.finishedActions == YES && SELF->_selectedItem == nil)
 		{
 			return kRoomIdleState;
 		}
@@ -239,6 +257,10 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	// Observe notifications from menu items
 	[[NSNotificationCenter defaultCenter] addObserverForName:kMenuItemSelected object:nil queue:nil usingBlock:^(NSNotification *note)
 	 {
+		 if (_selectedItem == nil)
+		 {
+			 _selectedItem = (ItemSelection *)[note.object retain];
+		 }
 	 }];
 }
 
