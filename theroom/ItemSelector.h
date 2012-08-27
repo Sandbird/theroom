@@ -11,14 +11,14 @@
 
 @interface ItemSelection : NSObject
 {
-	NSString *_selectedTag;
+	NSString *_itemName;
 	NSUInteger _itemNumber;
 }
 
-@property (nonatomic, readonly) NSString *selectedTag;
+@property (nonatomic, readonly) NSString *itemName;
 @property (nonatomic, readonly) NSUInteger itemNumber;
 
-+ (id)itemSelectionWithTag:(NSString *)selectedTag itemNumber:(NSUInteger)itemNumber;
++ (id)itemSelectionWithName:(NSString *)itemName itemNumber:(NSUInteger)itemNumber;
 
 @end
 
@@ -26,10 +26,11 @@
 {
     NSMutableArray *_items;
 	NSString *_tag;
+	NSString *_furnitureName;
 	
 	BOOL _clicked;
 }
 
-- (id)initWithTag:(NSString *)tag;
+- (id)initWithTag:(NSString *)tag furnitureName:(NSString *)furnitureName;
 
 @end

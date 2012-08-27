@@ -41,7 +41,7 @@
 		_positionInRoom = CGPointFromDictionary([data objectForKey:@"PositionInRoom"]);
 		self.position = _positionInRoom;
 		
-		_itemSelector = [[ItemSelector alloc] initWithTag:[data objectForKey:@"Image"]];
+		_itemSelector = [[ItemSelector alloc] initWithTag:[data objectForKey:@"Image"] furnitureName:[data objectForKey:@"Name"]];
 		_itemSelector.position = CGPointFromDictionary([data objectForKey:@"MenuPosition"]);
         _itemSelector.visible = NO;
 		[self addChild:_itemSelector];

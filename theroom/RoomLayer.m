@@ -295,14 +295,11 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 
 - (void)updatePsyche
 {
-	if ([_selectedItem.selectedTag isEqualToString:@"bed"] == YES)
-	{
-		[_johnny.psyche updateWithSelection:_selectedItem];
+	[_johnny.psyche updateWithSelection:_selectedItem];
 		
-		if ([_selectedItem.selectedTag isEqualToString:@"bed"] == YES)
-		{
-			[self cycleDay];
-		}
+	if ([_selectedItem.itemName isEqualToString:@"Bed"] == YES)
+	{
+		[self cycleDay];
 	}
 }
 

@@ -16,20 +16,20 @@
 
 @implementation ItemSelection
 
-@synthesize selectedTag = _selectedTag;
+@synthesize itemName = _itemName;
 @synthesize itemNumber = _itemNumber;
 
-+ (id)itemSelectionWithTag:(NSString *)selectedTag itemNumber:(NSUInteger)itemNumber
++ (id)itemSelectionWithName:(NSString *)itemName itemNumber:(NSUInteger)itemNumber
 {
-	return [[[ItemSelection alloc] initWithSelectionTag:selectedTag itemNumber:itemNumber] autorelease];
+	return [[[ItemSelection alloc] initWithItemName:itemName itemNumber:itemNumber] autorelease];
 }
 
-- (id)initWithSelectionTag:(NSString *)selectedTag itemNumber:(NSUInteger)itemNumber
+- (id)initWithItemName:(NSString *)itemName itemNumber:(NSUInteger)itemNumber
 {
 	self = [super init];
 	if (self != nil)
 	{
-		_selectedTag = [selectedTag retain];
+		_itemName = [itemName retain];
 		_itemNumber = itemNumber;
 	}
 	
@@ -38,7 +38,7 @@
 
 -(void)dealloc
 {
-	[_selectedTag release];
+	[_itemName release];
 	[super dealloc];
 }
 
@@ -46,13 +46,14 @@
 
 @implementation ItemSelector
 
-- (id)initWithTag:(NSString *)tag
+- (id)initWithTag:(NSString *)tag furnitureName:(NSString *)furnitureName
 {
 	self = [super init];
 	if (self != nil)
 	{
 		_items = [[NSMutableArray alloc] initWithCapacity:3];
 		_tag = [tag retain];
+		_furnitureName = [furnitureName retain];
 		
 		for (NSUInteger i = 0; i < 3; ++i)
 		{
@@ -152,7 +153,7 @@
 			self.visible = NO;
 			_clicked = NO;
 			
-			[[NSNotificationCenter defaultCenter] postNotificationName:kMenuItemSelected object:[ItemSelection itemSelectionWithTag:_tag itemNumber:index]];
+			[[NSNotificationCenter defaultCenter] postNotificationName:kMenuItemSelected object:[ItemSelection itemSelectionWithName:_furnitureName itemNumber:index]];
 			
 			for (NSUInteger i = 0; i < 3; ++i)
 			{
@@ -238,6 +239,8 @@
 - (void)dealloc
 {
 	[_items release];
+	[_tag release];
+	[_furnitureName release];
 	
 	[super dealloc];
 }
