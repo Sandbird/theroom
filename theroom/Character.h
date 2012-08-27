@@ -33,5 +33,6 @@
 - (void)moveTo:(Furniture *)target;
 - (void)moveToWaypointWithName:(NSString *)waypointName;
 - (void)itemSelected;
+- (void)itemSelectionCancelled;
 
 @end

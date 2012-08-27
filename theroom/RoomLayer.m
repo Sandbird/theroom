@@ -83,6 +83,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		backgroundNoise.looping = YES;
 //		[backgroundNoise play];
 		
+		_itemSelectionCancelled = NO;
 		[self setupStateMachine];
 		
 		[self scheduleUpdate];
@@ -215,12 +216,17 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 			
 			[SELF->_johnny itemSelected];
 		}
+		else if (SELF->_itemSelectionCancelled)
+		{
+			[SELF->_johnny itemSelectionCancelled];
+		}
 	};
 	interactingWithFurnitureState.stateLeave = ^(void)
 	{
 		[SELF->_targetFurniture showInactive];
 		[SELF->_targetFurniture release];
 		SELF->_targetFurniture = nil;
+		SELF->_itemSelectionCancelled = NO;	
 	};
 	[interactingWithFurnitureState addEdge:^NSString *(ccTime delta)
 	{
@@ -270,10 +276,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	[[NSNotificationCenter defaultCenter] addObserverForName:kMenuItemCancelled object:nil queue:nil usingBlock:^(NSNotification *note)
 	 {
 		 // INGIMAR: here you set the furniture to inactive state and set the state machine accordingly
-//		 if (_selectedItem == nil)
-//		 {
-//			 _selectedItem = (ItemSelection *)[note.object retain];
-//		 }
+		 _itemSelectionCancelled = YES;
 	 }];
 }
 
