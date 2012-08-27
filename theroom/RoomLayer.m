@@ -74,9 +74,6 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		
 		// Setup the Character Johnny
 		_johnny = [[Character alloc] init];
-		
-		Waypoint *entrancePoint = [[Pathfinder sharedPathfinder] waypoint:@"Entrance"];
-		_johnny.position = entrancePoint.location;
 		[self addChild:_johnny];
 		
 		self.isMouseEnabled = YES;
@@ -126,7 +123,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		CGPoint mouseLocation = ccp(event.locationInWindow.x, event.locationInWindow.y);
 		_targetWaypoint = [[[Pathfinder sharedPathfinder] closestLocationTo:mouseLocation] retain];
 		
-		return YES;
+//		return YES;
 	}
 	
 	return NO;

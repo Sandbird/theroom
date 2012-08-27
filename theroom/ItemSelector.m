@@ -8,6 +8,8 @@
 
 #import "ItemSelector.h"
 
+#import "NotificationConstants.h"
+
 #define MENU_WIDTH 150.0f
 #define ITEM_WIDTH 50.0f
 #define ITEM_HEIGHT 42.0f
@@ -85,10 +87,15 @@
     
 	CGPoint locationInWindow = ccp(event.locationInWindow.x, event.locationInWindow.y);
 	CGPoint eventLocation = [self convertToNodeSpace:locationInWindow];
-	CGPoint finalPoint = ccpSub(eventLocation, ccp(MENU_WIDTH / 2, ITEM_HEIGHT / 2));
+	CGPoint finalPoint = eventLocation; // This seems to be offsetting it incorrectly? : ccpSub(eventLocation, ccp(MENU_WIDTH / 2, ITEM_HEIGHT / 2));
 	
 	if (finalPoint.y >= 0 && finalPoint.y <= ITEM_HEIGHT && finalPoint.x >= 0 && finalPoint.x <= MENU_WIDTH)
 	{
+		if (self.visible == YES)
+		{
+			[[NSNotificationCenter defaultCenter] postNotificationName:kMenuItemSelected object:self];
+		}
+		
 		NSLog(@"Mouse Up Inside Menu, swallowing event");
 		return YES;
 	}

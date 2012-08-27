@@ -39,7 +39,8 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 		[self addChild:_appearanceBack];
 		_appearanceBack.visible = NO;
 		
-		_currentWaypointName = @"Entrance";
+		_currentWaypointName = @"Outside";
+		self.position = [[Pathfinder sharedPathfinder] waypoint:_currentWaypointName].location;
 		_finishedActions = NO;
 		_targetFurniture = nil;
 		

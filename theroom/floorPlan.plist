@@ -160,5 +160,24 @@
 			</array>
 		</dict>
 	</dict>
+	<key>Outside</key>
+	<dict>
+		<key>Name</key>
+		<string>Outside</string>
+		<key>Position</key>
+		<dict>
+			<key>X</key>
+			<integer>480</integer>
+			<key>Y</key>
+			<integer>-60</integer>
+		</dict>
+		<key>Paths</key>
+		<dict>
+			<key>Entrance</key>
+			<array>
+				<string>Entrance</string>
+			</array>
+		</dict>
+	</dict>
 </dict>
 </plist>

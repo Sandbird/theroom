@@ -8,3 +8,5 @@
 
 NSString *kFurnitureNotActive = @"furnitureNotActive";
 NSString *kFurnitureActive = @"furnitureActive";
+
+NSString *kMenuItemSelected = @"menuItemSelected";
