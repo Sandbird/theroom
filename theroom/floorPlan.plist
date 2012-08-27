@@ -31,6 +31,11 @@
 			<array>
 				<string>TV</string>
 			</array>
+			<key>Phone</key>
+			<array>
+				<string>Bed</string>
+				<string>Phone</string>
+			</array>
 		</dict>
 	</dict>
 	<key>RoomCentre</key>
@@ -61,6 +66,10 @@
 			<key>TV</key>
 			<array>
 				<string>TV</string>
+			</array>
+			<key>Phone</key>
+			<array>
+				<string>Phone</string>
 			</array>
 		</dict>
 	</dict>
@@ -94,6 +103,10 @@
 			<key>TV</key>
 			<array>
 				<string>TV</string>
+			</array>
+			<key>Phone</key>
+			<array>
+				<string>Phone</string>
 			</array>
 		</dict>
 	</dict>
@@ -129,7 +142,6 @@
 			</array>
 			<key>Phone</key>
 			<array>
-				<string>Bed</string>
 				<string>Phone</string>
 			</array>
 		</dict>
@@ -163,6 +175,10 @@
 			<array>
 				<string>Bed</string>
 			</array>
+			<key>Phone</key>
+			<array>
+				<string>Phone</string>
+			</array>
 		</dict>
 	</dict>
 	<key>Phone</key>
@@ -172,7 +188,7 @@
 		<key>Position</key>
 		<dict>
 			<key>X</key>
-			<integer>276</integer>
+			<integer>246</integer>
 			<key>Y</key>
 			<integer>0</integer>
 		</dict>
@@ -186,7 +202,6 @@
 			</array>
 			<key>RoomCentre</key>
 			<array>
-				<string>Bed</string>
 				<string>RoomCentre</string>
 			</array>
 			<key>Fridge</key>
@@ -197,6 +212,10 @@
 			<key>Bed</key>
 			<array>
 				<string>Bed</string>
+			</array>
+			<key>TV</key>
+			<array>
+				<string>TV</string>
 			</array>
 		</dict>
 	</dict>
