@@ -15,6 +15,7 @@
 #import "ItemSelector.h"
 #import "NotificationConstants.h"
 #import "Pathfinder.h"
+#import "Psyche.h"
 #import "UtilityFunctions.h"
 #import "Waypoint.h"
 #import "SimpleAudioEngine.h"
