@@ -145,6 +145,12 @@
 				[normalSprite runAction:[CCFadeOut actionWithDuration:0.5f]];
 				[deactiveSprite runAction:[CCFadeOut actionWithDuration:0.5f]];
 			}
+		}]]];
+		
+		[self runAction:[CCSequence actionOne:[CCDelayTime actionWithDuration:1.0f] two:[CCCallBlock actionWithBlock:^
+		{
+			self.visible = NO;
+			_clicked = NO;
 			
 			[[NSNotificationCenter defaultCenter] postNotificationName:kMenuItemSelected object:[ItemSelection itemSelectionWithTag:_tag itemNumber:index]];
 		}]]];

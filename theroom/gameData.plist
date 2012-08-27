@@ -19,6 +19,13 @@
 			<key>Y</key>
 			<integer>189</integer>
 		</dict>
+		<key>MenuPosition</key>
+		<dict>
+			<key>X</key>
+			<integer>50</integer>
+			<key>Y</key>
+			<integer>150</integer>
+		</dict>
 	</dict>
 	<key>TV</key>
 	<dict>
@@ -27,7 +34,7 @@
 		<key>ActiveImage</key>
 		<string>tvActive</string>
 		<key>Name</key>
-		<string>Bed</string>
+		<string>TV</string>
 		<key>ClosestWayPoint</key>
 		<string>RoomCentre</string>
 		<key>PositionInRoom</key>
@@ -40,9 +47,9 @@
 		<key>MenuPosition</key>
 		<dict>
 			<key>X</key>
-			<integer>503</integer>
+			<integer>80</integer>
 			<key>Y</key>
-			<integer>371</integer>
+			<integer>110</integer>
 		</dict>
 	</dict>
 	<key>Fridge</key>
@@ -88,6 +95,13 @@
 			<integer>320</integer>
 			<key>Y</key>
 			<integer>45</integer>
+		</dict>
+		<key>MenuPosition</key>
+		<dict>
+			<key>X</key>
+			<integer>0</integer>
+			<key>Y</key>
+			<integer>150</integer>
 		</dict>
 	</dict>
 </dict>
