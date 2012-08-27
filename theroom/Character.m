@@ -41,6 +41,7 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 		
 		_currentWaypointName = @"Outside";
 		self.position = [[Pathfinder sharedPathfinder] waypoint:_currentWaypointName].location;
+		_finishedMovement = NO;
 		_finishedActions = NO;
 		_targetFurniture = nil;
 		
@@ -71,7 +72,7 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 {
 	if (_targetFurniture == nil)
 	{
-		_targetFurniture = target;
+		_targetFurniture = [target retain];
 		_finishedActions = NO;
 	}
 }
@@ -156,6 +157,12 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 	FiniteState *movementState = [FiniteState stateWithName:kCharacterMovementState];
 	movementState.stateEnter = ^(void)
 	{
+		SELF->_finishedMovement = NO;
+		if (SELF->_targetFurniture != nil && SELF->_wayPointDestinationName == nil)
+		{
+			SELF->_wayPointDestinationName = [SELF->_targetFurniture.closestWaypointName  retain];
+		}
+		
 		// Figure out path and create actions
 		NSArray *waypointsToDestination = [[Pathfinder sharedPathfinder] findPathBetween:SELF->_currentWaypointName andDestination:_wayPointDestinationName];
 		NSMutableArray *allActionsToDestination = [NSMutableArray arrayWithCapacity:[waypointsToDestination count]];
@@ -166,7 +173,7 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 			[allActionsToDestination addObject:moveAction];
 		}
 		[allActionsToDestination addObject:[CCCallBlock actionWithBlock:^{
-			SELF->_finishedActions = YES;
+			SELF->_finishedMovement = YES;
 		}]];
 		id waypointSequence = [CCSequence actionWithArray:allActionsToDestination];
 		
@@ -179,14 +186,22 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 		
 		[_wayPointDestinationName release];
 		_wayPointDestinationName = nil;
+		
+		SELF->_finishedActions = YES;
+		SELF->_finishedMovement = YES;
 	};
 	[movementState addEdge:^NSString *(ccTime delta)
 	 {
-		if (SELF->_finishedActions == YES)
-		{
-			return kCharacterIdleState;
-		}
-		
+		 if (SELF->_finishedMovement == YES)
+		 {
+			 if (SELF->_targetFurniture != nil)
+			 {
+				 return kCharacterInteractWithFurnitureState;
+			 }
+			 
+			 return kCharacterIdleState;
+		 }
+		 
 		return nil;
 	}];
 	

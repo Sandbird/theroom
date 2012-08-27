@@ -20,6 +20,7 @@
 	NSString *_currentWaypointName;
 	
 	// State Machine Variables
+	BOOL _finishedMovement;
 	BOOL _finishedActions;
 	Furniture *_targetFurniture;
 	NSString *_wayPointDestinationName;
