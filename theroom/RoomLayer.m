@@ -270,6 +270,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		 if (_selectedItem == nil)
 		 {
 			 _selectedItem = (ItemSelection *)[note.object retain];
+			 [self updatePsyche];
 		 }
 	 }];
 
@@ -278,6 +279,11 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		 // INGIMAR: here you set the furniture to inactive state and set the state machine accordingly
 		 _itemSelectionCancelled = YES;
 	 }];
+}
+
+- (void)updatePsyche
+{
+	
 }
 
 #pragma mark -
