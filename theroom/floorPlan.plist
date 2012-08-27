@@ -127,6 +127,11 @@
 			<array>
 				<string>TV</string>
 			</array>
+			<key>Phone</key>
+			<array>
+				<string>Bed</string>
+				<string>Phone</string>
+			</array>
 		</dict>
 	</dict>
 	<key>TV</key>
@@ -152,6 +157,41 @@
 			</array>
 			<key>Fridge</key>
 			<array>
+				<string>Fridge</string>
+			</array>
+			<key>Bed</key>
+			<array>
+				<string>Bed</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Phone</key>
+	<dict>
+		<key>Name</key>
+		<string>Phone</string>
+		<key>Position</key>
+		<dict>
+			<key>X</key>
+			<integer>276</integer>
+			<key>Y</key>
+			<integer>0</integer>
+		</dict>
+		<key>Paths</key>
+		<dict>
+			<key>Entrance</key>
+			<array>
+				<string>Bed</string>
+				<string>RoomCentre</string>
+				<string>Entrance</string>
+			</array>
+			<key>RoomCentre</key>
+			<array>
+				<string>Bed</string>
+				<string>RoomCentre</string>
+			</array>
+			<key>Fridge</key>
+			<array>
+				<string>Bed</string>
 				<string>Fridge</string>
 			</array>
 			<key>Bed</key>

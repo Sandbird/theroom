@@ -81,7 +81,7 @@
 		<key>Name</key>
 		<string>Phone</string>
 		<key>ClosestWayPoint</key>
-		<string>RoomCentre</string>
+		<string>Phone</string>
 		<key>PositionInRoom</key>
 		<dict>
 			<key>X</key>
