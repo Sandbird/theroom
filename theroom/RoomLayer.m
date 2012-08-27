@@ -69,13 +69,13 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		
 		_fridge = [Furniture furnitureWithData:[gameData objectForKey:@"Fridge"]];
 		[self addChild:_fridge];
-		
-		_phone = [Furniture furnitureWithData:[gameData objectForKey:@"Phone"]];
-		[self addChild:_phone];
-		
+
 		// Setup the Character Johnny
 		_johnny = [[Character alloc] init];
 		[self addChild:_johnny];
+				
+		_phone = [Furniture furnitureWithData:[gameData objectForKey:@"Phone"]];
+		[self addChild:_phone];
 		
 		self.isMouseEnabled = YES;
 		
