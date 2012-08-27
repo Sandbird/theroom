@@ -14,6 +14,36 @@
 #define ITEM_WIDTH 50.0f
 #define ITEM_HEIGHT 42.0f
 
+@implementation ItemSelection
+
+@synthesize selectedTag = _selectedTag;
+@synthesize itemNumber = _itemNumber;
+
++ (id)itemSelectionWithTag:(NSString *)selectedTag itemNumber:(NSUInteger)itemNumber
+{
+	return [[[ItemSelection alloc] initWithSelectionTag:selectedTag itemNumber:itemNumber] autorelease];
+}
+
+- (id)initWithSelectionTag:(NSString *)selectedTag itemNumber:(NSUInteger)itemNumber
+{
+	self = [super init];
+	if (self != nil)
+	{
+		_selectedTag = [selectedTag retain];
+		_itemNumber = itemNumber;
+	}
+	
+	return self;
+}
+
+-(void)dealloc
+{
+	[_selectedTag release];
+	[super dealloc];
+}
+
+@end
+
 @implementation ItemSelector
 
 - (id)initWithTag:(NSString *)tag
@@ -91,10 +121,9 @@
 	
 	if (finalPoint.y >= 0 && finalPoint.y <= ITEM_HEIGHT && finalPoint.x >= 0 && finalPoint.x <= MENU_WIDTH)
 	{
-		if (self.visible == YES)
-		{
-			[[NSNotificationCenter defaultCenter] postNotificationName:kMenuItemSelected object:self];
-		}
+		// TODO: Marco Please finish this functionality :)
+		[[NSNotificationCenter defaultCenter] postNotificationName:kMenuItemSelected object:[ItemSelection itemSelectionWithTag:_tag itemNumber:0]];
+		self.visible = NO;
 		
 		NSLog(@"Mouse Up Inside Menu, swallowing event");
 		return YES;

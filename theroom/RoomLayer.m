@@ -216,6 +216,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 
 - (void)setupObservations
 {
+	// Observe notifications from furniture items
 	[[NSNotificationCenter defaultCenter] addObserverForName:kFurnitureNotActive object:nil queue:nil usingBlock:^(NSNotification *note)
 	 {
 		 NSLog(@"WARNING: No response implemented for handling making furniture inactive");
@@ -232,6 +233,12 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 				   ((Furniture *)note.object).name,
 				   _targetFurniture.name);
 		 }
+	 }];
+	
+	
+	// Observe notifications from menu items
+	[[NSNotificationCenter defaultCenter] addObserverForName:kMenuItemSelected object:nil queue:nil usingBlock:^(NSNotification *note)
+	 {
 	 }];
 }
 

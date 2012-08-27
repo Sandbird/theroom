@@ -9,6 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+@interface ItemSelection : NSObject
+{
+	NSString *_selectedTag;
+	NSUInteger _itemNumber;
+}
+
+@property (nonatomic, readonly) NSString *selectedTag;
+@property (nonatomic, readonly) NSUInteger itemNumber;
+
++ (id)itemSelectionWithTag:(NSString *)selectedTag itemNumber:(NSUInteger)itemNumber;
+
+@end
+
 @interface ItemSelector : CCNode <CCMouseEventDelegate>
 {
     NSMutableArray *_items;
