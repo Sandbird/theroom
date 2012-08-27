@@ -17,7 +17,10 @@
 	NSInteger _score;
 }
 
-//@property (nonatomic) 
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readwrite) NSInteger score;
+
++ (id)mentalFactorWithName:(NSString *)name initialScore:(NSInteger)score;
 
 @end
 
