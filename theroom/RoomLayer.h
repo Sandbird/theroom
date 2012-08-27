@@ -26,6 +26,7 @@
 	Furniture *_fridge;
 	Furniture *_phone;
 	Character *_johnny;
+	NSMutableArray *_allFurniture;
 	
 	CDSoundSource *_backgroundNoise;
 	

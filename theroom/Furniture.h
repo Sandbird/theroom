@@ -21,6 +21,7 @@
 	CDSoundSource *_sound;
 	ItemSelector *_itemSelector;
 	
+	BOOL _interactive;
 	BOOL _activeState;
 }
 
@@ -33,5 +34,7 @@
 - (id)initWithData:(NSDictionary *)data;
 - (void)showInactive;
 - (void)showActive;
+
+- (void)prepareForNewDay;
 
 @end

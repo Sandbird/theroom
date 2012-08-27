@@ -100,6 +100,9 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		
 		// Register for game notifications
 		[self setupObservations];
+		
+		// Cache all the furniture separately in an arry for easy enumeration
+		_allFurniture = [[NSMutableArray alloc] initWithObjects:_bed, _tv, _fridge, _phone, nil];
 	}
 	
 	return self;
@@ -152,6 +155,11 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	{
 		SELF->_isInteractive = NO;
 		[SELF->_johnny moveToWaypointWithName:@"Entrance"];
+		[SELF->_allFurniture enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+		 {
+			 Furniture *furniture = (Furniture *)obj;
+			 [furniture prepareForNewDay];
+		 }];
 	};
 	enteringRoom.stateLeave = ^(void)
 	{
@@ -327,6 +335,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 - (void)dealloc
 {
 	[_room release];
+	[_allFurniture release];
 	
 	[super dealloc];
 }

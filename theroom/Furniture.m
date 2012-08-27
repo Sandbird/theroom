@@ -54,6 +54,16 @@
 		
 		[self showInactive];
 		
+		_interactive = YES;
+		[[NSNotificationCenter defaultCenter] addObserverForName:kMenuItemSelected object:nil queue:nil usingBlock:^(NSNotification *note)
+		{
+			ItemSelection *selection = (ItemSelection *)note.object;
+			if ([selection.itemName isEqualToString:_name])
+			{
+				_interactive = NO;
+			}
+		}];
+		
 		// Register for mouse events
 		CCDirector *director = [CCDirector sharedDirector];
 		[[director eventDispatcher] addMouseDelegate:self priority:1];
@@ -84,24 +94,33 @@
 	_activeState = YES;
 }
 
+- (void)prepareForNewDay
+{
+	_interactive = YES;
+}
+
 - (BOOL)ccMouseUp:(NSEvent *)event
 {
-	CGPoint locationInWindow = ccp(event.locationInWindow.x, event.locationInWindow.y);
-	CGPoint eventLocation = [self convertToNodeSpace:locationInWindow];
-	CGPoint halfSize = ccpMult( ccp(_front.contentSize.width, _front.contentSize.height), 0.5f);
-
-	if (ABS(eventLocation.x) <= halfSize.x && ABS(eventLocation.y) <= halfSize.y)
+	if (_interactive)
 	{
-		if (_activeState == YES)
+		
+		CGPoint locationInWindow = ccp(event.locationInWindow.x, event.locationInWindow.y);
+		CGPoint eventLocation = [self convertToNodeSpace:locationInWindow];
+		CGPoint halfSize = ccpMult( ccp(_front.contentSize.width, _front.contentSize.height), 0.5f);
+		
+		if (ABS(eventLocation.x) <= halfSize.x && ABS(eventLocation.y) <= halfSize.y)
 		{
-			[[NSNotificationCenter defaultCenter] postNotificationName:kFurnitureNotActive object:self];
+			if (_activeState == YES)
+			{
+				[[NSNotificationCenter defaultCenter] postNotificationName:kFurnitureNotActive object:self];
+			}
+			else
+			{
+				[[NSNotificationCenter defaultCenter] postNotificationName:kFurnitureActive object:self];
+			}
+			NSLog(@"Mouse Up Inside Furniture, swallowing event");
+			return YES;
 		}
-		else
-		{
-			[[NSNotificationCenter defaultCenter] postNotificationName:kFurnitureActive object:self];
-		}
-		NSLog(@"Mouse Up Inside Furniture, swallowing event");
-		return YES;
 	}
 
 	return NO;
