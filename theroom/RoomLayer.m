@@ -78,10 +78,19 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		_phone = [Furniture furnitureWithData:[gameData objectForKey:@"Phone"]];
 		[self addChild:_phone];
 		
+		_nightLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 50, 255)];
+		_nightLayer.opacity = 0;
+		[self addChild:_nightLayer];
+		
+		_dayLabel = [CCLabelTTF labelWithString:@"DAY 1" fontName:@"Arial" fontSize:48];
+		_dayLabel.position = ccp(480, 256);
+		_dayLabel.opacity = 0;
+		[_nightLayer addChild:_dayLabel];
+		
 		self.isMouseEnabled = YES;
 		
-		backgroundNoise = [[SimpleAudioEngine sharedEngine] soundSourceForFile:@"room_tone_bg_loop.wav"];
-		backgroundNoise.looping = YES;
+		_backgroundNoise = [[SimpleAudioEngine sharedEngine] soundSourceForFile:@"room_tone_bg_loop.wav"];
+		_backgroundNoise.looping = YES;
 //		[backgroundNoise play];
 		
 		_itemSelectionCancelled = NO;
@@ -146,6 +155,8 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	};
 	enteringRoom.stateLeave = ^(void)
 	{
+		[SELF cycleDay];
+		
 		SELF->_isInteractive = YES;
 	};
 	[enteringRoom addEdge:^NSString *(ccTime delta)
@@ -158,6 +169,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	 }];
 	
 	// Going To Sleep State
+	// INGIMAR: use the sleep state to show the day cycle WHILE johnny is sleeping and NOT after he wakes up
 	FiniteState *sleepState = [FiniteState stateWithName:kRoomGoingToSleepState];
 	
 	// Idle State
@@ -277,17 +289,39 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:kMenuItemCancelled object:nil queue:nil usingBlock:^(NSNotification *note)
 	 {
-		 // INGIMAR: here you set the furniture to inactive state and set the state machine accordingly
 		 _itemSelectionCancelled = YES;
 	 }];
 }
 
 - (void)updatePsyche
 {
-	if (_selectedItem != nil)
+	if ([_selectedItem.selectedTag isEqualToString:@"bed"] == YES)
 	{
 		[_johnny.psyche updateWithSelection:_selectedItem];
+		
+		if ([_selectedItem.selectedTag isEqualToString:@"bed"] == YES)
+		{
+			[self cycleDay];
+		}
 	}
+}
+
+- (void)cycleDay
+{
+	// INGIMAR: use this variable in the state machine to discard all input while the cycling is animated
+	_dayCycling = YES;
+	
+	_dayLabel.string = [NSString stringWithFormat:@"DAY %lu", _johnny.psyche.numberOfDays];
+	
+	_nightLayer.opacity = 0;
+	_dayLabel.opacity = 0;
+	
+	[_nightLayer runAction:[CCSequence actions:[CCFadeTo actionWithDuration:2.0f opacity:190], [CCDelayTime actionWithDuration:1.0f], [CCFadeTo actionWithDuration:2.0f opacity:0], nil]];
+	[_dayLabel runAction:[CCSequence actions:[CCFadeIn actionWithDuration:2.0f], [CCDelayTime actionWithDuration:1.0f], [CCFadeOut actionWithDuration:2.0f],
+						  [CCCallBlock actionWithBlock:^
+	{
+		_dayCycling = NO;
+	}], nil]];
 }
 
 #pragma mark -

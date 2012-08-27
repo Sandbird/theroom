@@ -27,7 +27,7 @@
 	Furniture *_phone;
 	Character *_johnny;
 	
-	CDSoundSource *backgroundNoise;
+	CDSoundSource *_backgroundNoise;
 	
 	// State Variables For Input
 	Furniture *_targetFurniture;
@@ -35,6 +35,10 @@
 	ItemSelection *_selectedItem;
 	BOOL _itemSelectionCancelled;
 	BOOL _isInteractive;
+	
+	CCLayerColor *_nightLayer;
+	CCLabelTTF *_dayLabel;
+	BOOL _dayCycling;
 	
 	// Game Loop State Machine
 	FiniteStateMachine *_room;
