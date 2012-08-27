@@ -77,10 +77,19 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		_phone = [Furniture furnitureWithData:[gameData objectForKey:@"Phone"]];
 		[self addChild:_phone];
 		
+		_nightLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 50, 255)];
+		_nightLayer.opacity = 0;
+		[self addChild:_nightLayer];
+		
+		_dayLabel = [CCLabelTTF labelWithString:@"DAY 1" fontName:@"Arial" fontSize:48];
+		_dayLabel.position = ccp(480, 256);
+		_dayLabel.opacity = 0;
+		[_nightLayer addChild:_dayLabel];
+		
 		self.isMouseEnabled = YES;
 		
-		backgroundNoise = [[SimpleAudioEngine sharedEngine] soundSourceForFile:@"room_tone_bg_loop.wav"];
-		backgroundNoise.looping = YES;
+		_backgroundNoise = [[SimpleAudioEngine sharedEngine] soundSourceForFile:@"room_tone_bg_loop.wav"];
+		_backgroundNoise.looping = YES;
 //		[backgroundNoise play];
 		
 		_itemSelectionCancelled = NO;
@@ -283,7 +292,19 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 
 - (void)updatePsyche
 {
+	if ([_selectedItem.selectedTag isEqualToString:@"bed"] == YES)
+	{
+		[self cycleDay];
+	}
+}
+
+- (void)cycleDay
+{
+	_nightLayer.opacity = 0;
+	_dayLabel.opacity = 0;
 	
+	[_nightLayer runAction:[CCSequence actions:[CCFadeTo actionWithDuration:2.0f opacity:190], [CCDelayTime actionWithDuration:1.0f], [CCFadeTo actionWithDuration:2.0f opacity:0], nil]];
+	[_dayLabel runAction:[CCSequence actions:[CCFadeIn actionWithDuration:2.0f], [CCDelayTime actionWithDuration:1.0f], [CCFadeOut actionWithDuration:2.0f], nil]];
 }
 
 #pragma mark -
