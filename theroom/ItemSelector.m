@@ -78,6 +78,11 @@
 
 - (BOOL)ccMouseUp:(NSEvent *)event
 {
+    if (self.visible == NO)
+    {
+        return NO;
+    }
+    
 	CGPoint locationInWindow = ccp(event.locationInWindow.x, event.locationInWindow.y);
 	CGPoint eventLocation = [self convertToNodeSpace:locationInWindow];
 	CGPoint finalPoint = ccpSub(eventLocation, ccp(MENU_WIDTH / 2, ITEM_HEIGHT / 2));

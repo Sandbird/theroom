@@ -40,10 +40,10 @@
 		_closestWaypointName = [[data objectForKey:@"ClosestWayPoint"] retain];
 		_positionInRoom = CGPointFromDictionary([data objectForKey:@"PositionInRoom"]);
 		self.position = _positionInRoom;
-//		self.contentSize = _front.contentSize;
 		
 		_itemSelector = [[ItemSelector alloc] initWithTag:[data objectForKey:@"Image"]];
 		_itemSelector.position = CGPointFromDictionary([data objectForKey:@"MenuPosition"]);
+        _itemSelector.visible = NO;
 		[self addChild:_itemSelector];
 		
 		if ([data objectForKey:@"Sound"] != nil)
@@ -57,8 +57,6 @@
 		// Register for mouse events
 		CCDirector *director = [CCDirector sharedDirector];
 		[[director eventDispatcher] addMouseDelegate:self priority:1];
-		
-//		self.anchorPoint = ccp(0.5f, 0.5f);
 	}
 	
 	return self;
@@ -70,6 +68,8 @@
 	_front.visible = YES;
 	[_sound stop];
 
+    _itemSelector.visible = NO;
+    
 	_activeState = NO;
 }
 
@@ -79,6 +79,8 @@
 	_front.visible = NO;
 	[_sound play];
 	
+    _itemSelector.visible = YES;
+    
 	_activeState = YES;
 }
 
@@ -96,7 +98,6 @@
 		}
 		else
 		{
-			
 			[[NSNotificationCenter defaultCenter] postNotificationName:kFurnitureActive object:self];
 		}
 		NSLog(@"Mouse Up Inside Furniture, swallowing event");

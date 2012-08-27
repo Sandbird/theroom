@@ -126,10 +126,10 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		CGPoint mouseLocation = ccp(event.locationInWindow.x, event.locationInWindow.y);
 		_targetWaypoint = [[[Pathfinder sharedPathfinder] closestLocationTo:mouseLocation] retain];
 		
-		return NO;
+		return YES;
 	}
 	
-	return YES;
+	return NO;
 }
 
 #pragma mark - Private 
