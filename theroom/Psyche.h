@@ -10,6 +10,7 @@
 
 // Forward Declarations
 @class ItemSelection;
+@class CDSoundSource;
 
 @interface MentalFactor : NSObject
 {
@@ -39,6 +40,9 @@ typedef enum
 	NSMutableArray *_events;
 	NSUInteger _numberOfDays;
 	MentalState _mentalState;
+	
+	CDSoundSource *_goodFeedback;
+	CDSoundSource *_badFeedback;
 }
 
 @property (nonatomic, readonly) NSUInteger numberOfDays;

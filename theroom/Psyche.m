@@ -8,6 +8,7 @@
 
 #import "Psyche.h"
 #import "ItemSelector.h"
+#import "SimpleAudioEngine.h"
 
 @implementation MentalFactor
 
@@ -59,6 +60,14 @@ static NSInteger minContentScore = 25;
 		_events = [[NSMutableArray alloc] initWithCapacity:[gameData count]];
         _numberOfDays = 1;
 		_mentalState = kMentalStateStable;
+		
+		
+
+		_goodFeedback = [[[SimpleAudioEngine sharedEngine] soundSourceForFile:@"yes2.wav"] retain];
+		_goodFeedback.looping = NO;
+		
+		_badFeedback = [[[SimpleAudioEngine sharedEngine] soundSourceForFile:@"no2.wav"] retain];
+		_badFeedback.looping = NO;
     }
     return self;
 }
@@ -66,17 +75,19 @@ static NSInteger minContentScore = 25;
 - (void)updateWithSelection:(ItemSelection *)selection
 {
 
-	
 	MentalFactor *mentalFactor = [_mentalFactors objectForKey:selection.itemName];
 	if (mentalFactor.desire == selection.itemNumber)
 	{
 		mentalFactor.score += 1;
 		NSLog(@"Correct choice %@ increased by one, now %ld", selection.itemName, mentalFactor.score);
+		[_goodFeedback play];
 	}
 	else
 	{
 		mentalFactor.score -= 2;
 		NSLog(@"Wrong choice %@ decreased by two, now : %ld", selection.itemName, mentalFactor.score);
+		
+		[_badFeedback play];
 	}
 	
 	[_events addObject:selection];
