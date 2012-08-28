@@ -40,8 +40,8 @@
 @synthesize numberOfDays = _numberOfDays;
 @synthesize mentalState = _mentalState;
 
-static NSInteger minStableScore = 6;
-static NSInteger minContentScore = 12;
+static NSInteger minStableScore = 10;
+static NSInteger minContentScore = 25;
 
 - (id)init
 {
@@ -107,23 +107,26 @@ static NSInteger minContentScore = 12;
 	}
 	
 	// If the user gets it right make the person content
-	__block BOOL everythingCorrect = YES;
-	[_events enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-	 {
-		 ItemSelection *event = (ItemSelection *)obj;
-		 MentalFactor *mentalFactor = [_mentalFactors objectForKey:event.itemName];
-		 if (event.itemNumber != mentalFactor.desire)
-		 {
-			 everythingCorrect = NO;
-			 *stop = YES;
-		 }
-	 }];
-	
-	if (everythingCorrect == YES)
+	if ([_events count] == [_mentalFactors count])
 	{
-		_mentalState = kMentalStateContent;
+		__block BOOL everythingCorrect = YES;
+		[_events enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+		 {
+			 ItemSelection *event = (ItemSelection *)obj;
+			 MentalFactor *mentalFactor = [_mentalFactors objectForKey:event.itemName];
+			 if (event.itemNumber != mentalFactor.desire)
+			 {
+				 everythingCorrect = NO;
+				 *stop = YES;
+			 }
+		 }];
+		
+		if (everythingCorrect == YES)
+		{
+			_mentalState = kMentalStateContent;
+		}
+		
 	}
-	
 	[_events removeAllObjects];
 }
 

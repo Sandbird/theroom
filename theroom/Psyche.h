@@ -44,7 +44,6 @@ typedef enum
 @property (nonatomic, readonly) NSUInteger numberOfDays;
 @property (nonatomic, readonly) MentalState mentalState;
 
-- (BOOL)isMentallyStable;
 - (void)updateWithSelection:(ItemSelection *)selection;
 - (void)contemplateDayEvents;
 

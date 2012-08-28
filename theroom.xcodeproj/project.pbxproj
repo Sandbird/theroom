@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31037E3E15EC4773002D98E5 /* endBad.png in Resources */ = {isa = PBXBuildFile; fileRef = 31037E3C15EC4773002D98E5 /* endBad.png */; };
+		31037E3F15EC4773002D98E5 /* endGood.png in Resources */ = {isa = PBXBuildFile; fileRef = 31037E3D15EC4773002D98E5 /* endGood.png */; };
 		3118D9DE15E90BC000D4518B /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 3118D9DD15E90BC000D4518B /* Character.m */; };
 		3118D9E115E90E6000D4518B /* gameData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3118D9E015E90E6000D4518B /* gameData.plist */; };
 		3118D9EC15E91AD900D4518B /* floorPlan.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3118D9EB15E91AD900D4518B /* floorPlan.plist */; };
@@ -190,6 +192,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31037E3C15EC4773002D98E5 /* endBad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = endBad.png; path = Resources/endBad.png; sourceTree = "<group>"; };
+		31037E3D15EC4773002D98E5 /* endGood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = endGood.png; path = Resources/endGood.png; sourceTree = "<group>"; };
 		3118D9DC15E90BC000D4518B /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		3118D9DD15E90BC000D4518B /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
 		3118D9E015E90E6000D4518B /* gameData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gameData.plist; sourceTree = "<group>"; };
@@ -974,6 +978,8 @@
 		31EE332E15E8EC0E00DAF6B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				31037E3C15EC4773002D98E5 /* endBad.png */,
+				31037E3D15EC4773002D98E5 /* endGood.png */,
 				3118DA0215E94BB300D4518B /* bed.png */,
 				A060CADB15EA972D00F4F558 /* bed0.png */,
 				A060CADC15EA972D00F4F558 /* bed0deactive.png */,
@@ -1142,6 +1148,8 @@
 				A060CB0E15EA972F00F4F558 /* phone2.png in Resources */,
 				A060CB0F15EA972F00F4F558 /* phone2deactive.png in Resources */,
 				A060CB1015EA972F00F4F558 /* phone2hover.png in Resources */,
+				31037E3E15EC4773002D98E5 /* endBad.png in Resources */,
+				31037E3F15EC4773002D98E5 /* endGood.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

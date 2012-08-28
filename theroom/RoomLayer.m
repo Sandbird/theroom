@@ -28,6 +28,8 @@ static NSString *kRoomIdleState = @"idleState";
 static NSString *kRoomSleepState = @"sleepState";
 static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState";
 static NSString *kRoomMoveCharacterState = @"moveCharacterState";
+static NSString *kRoomDeathState = @"roomDeathState";
+static NSString *kRoomHolidayState = @"roomHolidayState";
 
 +(CCScene *) scene
 {
@@ -171,7 +173,6 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	 }];
 	
 	// Going To Sleep State
-	// INGIMAR: use the sleep state to show the day cycle WHILE johnny is sleeping and NOT after he wakes up
 	FiniteState *sleepState = [FiniteState stateWithName:kRoomSleepState];
 	sleepState.stateLeave = ^(void)
 	{
@@ -179,13 +180,44 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	};
 	[sleepState addEdge:^NSString *(ccTime delta)
 	 {
-		 if (_dayCycling == NO)
+		 if (SELF->_johnny.psyche.mentalState == kMentalStateInsane)
+		 {
+			 return kRoomDeathState;
+		 }
+		 else if (SELF->_johnny.psyche.mentalState == kMentalStateContent)
+		 {
+			 return kRoomHolidayState;
+		 }
+		 if (SELF->_dayCycling == NO)
 		 {
 			 return kRoomEnteringRoomState;
 		 }
 		 
 		 return nil;
 	 }];
+	
+	// HolidayState
+	FiniteState *holidayState = [FiniteState stateWithName:kRoomHolidayState];
+	holidayState.stateEnter = ^(void)
+	{
+		NSString *pathToHoliday = [[NSBundle mainBundle] pathForResource:@"endGood" ofType:@"png"];
+		CCSprite *endScene = [CCSprite spriteWithFile:pathToHoliday];
+		CGSize winSize = [[CCDirector sharedDirector] winSize];
+		endScene.position = ccp( winSize.width / 2, winSize.height / 2);
+		[SELF addChild:endScene];
+		
+	};
+	
+	// Death State
+	FiniteState *deathState = [FiniteState stateWithName:kRoomDeathState];
+	deathState.stateEnter = ^(void)
+	{
+		NSString *pathToDeath = [[NSBundle mainBundle] pathForResource:@"endBad" ofType:@"png"];
+		CCSprite *endScene = [CCSprite spriteWithFile:pathToDeath];
+		CGSize winSize = [[CCDirector sharedDirector] winSize];
+		endScene.position = ccp( winSize.width / 2, winSize.height / 2);
+		[SELF addChild:endScene];
+	};
 	
 	// Idle State
 	FiniteState *idleState = [FiniteState stateWithName:kRoomIdleState];
@@ -271,7 +303,7 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	}];
 	
 	_room = [[FiniteStateMachine alloc] initWithInitialState:enteringRoom];
-	[_room addStates:sleepState, idleState, moveCharacterState, interactingWithFurnitureState, nil];
+	[_room addStates:sleepState, idleState, moveCharacterState, interactingWithFurnitureState, holidayState, deathState, nil];
 }
 
 - (void)setupObservations
