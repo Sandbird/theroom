@@ -25,7 +25,7 @@
 
 static NSString *kRoomEnteringRoomState = @"enteringRoomState";
 static NSString *kRoomIdleState = @"idleState";
-static NSString *kRoomGoingToSleepState = @"goingToSleepState";
+static NSString *kRoomSleepState = @"sleepState";
 static NSString *kRoomInteractWithFurnitureState = @"interactWithFurnitureState";
 static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 
@@ -161,12 +161,6 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 			 [furniture prepareForNewDay];
 		 }];
 	};
-	enteringRoom.stateLeave = ^(void)
-	{
-		[SELF cycleDay];
-		
-		SELF->_isInteractive = YES;
-	};
 	[enteringRoom addEdge:^NSString *(ccTime delta)
 	 {
 		 if (SELF->_johnny.finishedActions == YES)
@@ -178,7 +172,20 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	
 	// Going To Sleep State
 	// INGIMAR: use the sleep state to show the day cycle WHILE johnny is sleeping and NOT after he wakes up
-	FiniteState *sleepState = [FiniteState stateWithName:kRoomGoingToSleepState];
+	FiniteState *sleepState = [FiniteState stateWithName:kRoomSleepState];
+	sleepState.stateLeave = ^(void)
+	{
+		SELF->_isInteractive = YES;
+	};
+	[sleepState addEdge:^NSString *(ccTime delta)
+	 {
+		 if (_dayCycling == NO)
+		 {
+			 return kRoomEnteringRoomState;
+		 }
+		 
+		 return nil;
+	 }];
 	
 	// Idle State
 	FiniteState *idleState = [FiniteState stateWithName:kRoomIdleState];
@@ -195,6 +202,10 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 		 else if (SELF->_targetWaypoint != nil)
 		 {
 			 return kRoomMoveCharacterState;
+		 }
+		 else if (SELF->_dayCycling == YES)
+		 {
+			 return kRoomSleepState;
 		 }
 		 
 		 return nil;
@@ -328,6 +339,8 @@ static NSString *kRoomMoveCharacterState = @"moveCharacterState";
 	{
 		_dayCycling = NO;
 	}], nil]];
+	
+	[_johnny teleportToInitialPosition];
 }
 
 #pragma mark -

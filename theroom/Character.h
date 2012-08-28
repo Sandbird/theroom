@@ -22,6 +22,8 @@
 	
 	Psyche *_psyche;
 	
+	CGPoint initialPosition;
+	
 	// State Machine Variables
 	BOOL _finishedMovement;
 	BOOL _finishedActions;
@@ -37,6 +39,8 @@
 - (void)update:(ccTime)delta;
 - (void)moveTo:(Furniture *)target;
 - (void)moveToWaypointWithName:(NSString *)waypointName;
+- (void)teleportToInitialPosition;
+
 - (void)itemSelected;
 - (void)itemSelectionCancelled;
 

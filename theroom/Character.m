@@ -43,6 +43,7 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 		
 		_currentWaypointName = @"Outside";
 		self.position = [[Pathfinder sharedPathfinder] waypoint:_currentWaypointName].location;
+		initialPosition = self.position;
 		
 		_psyche = [[Psyche alloc] init];
 		
@@ -88,6 +89,12 @@ static NSString *kCharacterInteractWithFurnitureState = @"characterInteractWithF
 	{
 		_wayPointDestinationName = [waypointName retain];
 	}
+}
+
+- (void)teleportToInitialPosition
+{
+	self.position = initialPosition;
+	_currentWaypointName = @"Outside";
 }
 
 - (void)itemSelected
