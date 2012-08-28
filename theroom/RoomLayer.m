@@ -206,6 +206,13 @@ static NSString *kRoomHolidayState = @"roomHolidayState";
 		endScene.position = ccp( winSize.width / 2, winSize.height / 2);
 		[SELF addChild:endScene];
 		
+		CCLabelTTF *quitLabel = [CCLabelTTF labelWithString:@"Great, you feel content with your choices, time for a holiday" fontName:@"Arial" fontSize:24];
+		CCMenuItem *quitMenuItem = [CCMenuItemLabel itemWithLabel:quitLabel block:^(id sender)
+									{
+										[[NSApplication sharedApplication] terminate:self];
+									}];
+		quitMenuItem.position = ccp(winSize.width / 2, winSize.height / 2 + 100);
+		[SELF addChild:quitMenuItem];
 	};
 	
 	// Death State
@@ -217,6 +224,14 @@ static NSString *kRoomHolidayState = @"roomHolidayState";
 		CGSize winSize = [[CCDirector sharedDirector] winSize];
 		endScene.position = ccp( winSize.width / 2, winSize.height / 2);
 		[SELF addChild:endScene];
+		
+		CCLabelTTF *quitLabel = [CCLabelTTF labelWithString:@"You didn't manage to adapt to your environment, try again" fontName:@"Arial" fontSize:24];
+		CCMenuItem *quitMenuItem = [CCMenuItemLabel itemWithLabel:quitLabel block:^(id sender)
+									{
+										[[NSApplication sharedApplication] terminate:self];
+									}];
+		quitMenuItem.position = ccp(winSize.width / 2, winSize.height / 2 - 200);
+		[SELF addChild:quitMenuItem];
 	};
 	
 	// Idle State
